@@ -1,0 +1,81 @@
+<link rel='import', href='../node_modules/\@josebarrios/ui-organization-card/element/index.html'>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+<template id="ui-job-posting-view">
+
+	<div class="ui-job-posting-container">
+
+		<div class="row">
+			<ui-organization-card model='{"image":"https://www.hispanicizewire.com/wp-content/uploads/2017/05/BE-FEATURED.jpg", "name":"Cognilab Technologies", "disambiguatingDescription": "Some Company", "address":{ "addressLocality":"Victoria", "addressRegion": "BC"}, "description":"Some description of the company goes here. One, two three, four, five, six, seven, eight, nine, ten. One, two, three, four, five, six, seven, eight, nine, ten. One, two three, four, five, six, seven, eight, nine, ten. One, two three, four, five, six, seven, eight, nine, ten. One, two three, four, five, six, seven, eight, nine, ten." }'></ui-organization-card>
+		</div>
+		<div class="row">
+			<img class="image" id="image" src="http://coworkingdesign.com/wp-content/uploads/eck-1.jpg">
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-8 col-md-12 col-sm-12 left">
+			<div class="row">
+				<div class="col-lg-12">
+					<p class="date-posted" id="datePosted">Sep 30th, 2017</p>
+					<p class="title" id="title">
+						Front-end Developer
+					<span class="work-hours" id="workHours">workHours</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<span class="col-lg-4" id="jobLocation">San. Francisco, CA</span>
+				<span class="col-lg-4" id="employmentType">Full-Time</span>
+				<span class="col-lg-4" id="baseSalary">
+					75k
+					<span id="salaryCurrency">USD</span>
+				</span>
+			</div>
+			<div class="row">
+				<p class="col-lg-12" id="description">Description</p>
+			</div>
+			<div class="row">
+				<p class="col-lg-12" id="skills">skills</p>
+			</div>
+			<div class="row">
+				<p class="col-lg-12" id="qualifications">Qualifications</p>
+			</div>
+			<div class="row">
+				<p class="col-lg-12" id="responsibilities">Responsibilities</p>
+			</div>
+		</div>
+
+
+		<div class="col-lg-4 col-md-12 col-sm-12 right">
+			<div class="row">
+				<p class="col-lg-12" id="educationRequirements">educationRequirements</p>
+				<p class="col-lg-12" id="experienceRequirements">experienceRequirements</p>
+			</div>
+			<div class="row">
+				<p class="col-lg-12" id="incentiveCompensation">incentiveCompensation</p>
+				<p class="col-lg-12" id="jobBenefits">jobBenefits</p>
+			</div>
+			<div class="row">
+				<p class="col-lg-12" id="specialCommitments">specialCommitments</p>
+			</div>
+			<div class="row">
+				<button class="col-lg-12"> APPLY NOW </button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--<p id="hiringOrganization">hiringOrganization</p>-->
+
+<!--HIDDEN-->
+<div class="col-lg-12 hidden">
+	<p id="industry">industry</p>
+	<p id="occupationalCategory">occupationalCategory</p>
+	<p id="validThrough">validThrough</p>
+</div>
+
+</template>
+
+<script type="text/javascript" src="data-controller.js"> </script>
+<script type="text/javascript" src="view-controller.js"> </script>

@@ -1,0 +1,36 @@
+{
+  "name": "@josebarrios/ui-job-posting",
+  "version": "0.1.12",
+  "description": "A set of custom element for job posting",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/yarn/bin/yarn upgrade; ./node_modules/webpack/bin/webpack.js",
+    "test": "./node_modules/http-server/bin/http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseBarrios/ui-job-posting.git"
+  },
+  "keywords": [
+    "custom",
+    "element",
+    "class"
+  ],
+  "browser": "browser.js",
+  "author": "JoseBarrios",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/JoseBarrios/ui-job-posting/issues"
+  },
+  "homepage": "https://github.com/JoseBarrios/ui-job-posting#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "mocha": "^3.4.2",
+    "webpack": "^3.3.0",
+    "yarn": "^0.27.5"
+  },
+  "dependencies": {
+    "@josebarrios/job-posting": "^0.2.0",
+    "@josebarrios/ui-organization-card": "0.1.12"
+  }
+}
