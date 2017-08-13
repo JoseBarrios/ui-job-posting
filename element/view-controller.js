@@ -16,9 +16,6 @@ class JobPostingViewController extends HTMLElement{
 		this.shadowRoot.appendChild(view);
   }
 
-	get shadowRoot(){return this._shadowRoot;}
-	set shadowRoot(value){ this._shadowRoot = value}
-
 	///STANDARD
 	connectedCallback() {
 
@@ -45,8 +42,6 @@ class JobPostingViewController extends HTMLElement{
 		this.$description = this.shadowRoot.querySelector('#description');
 		this.$image = this.shadowRoot.querySelector('#image');
 
-		//this.$xxx = this.shadowRoot.querySelector('#xxx');
-		//this.$xxx = this.shadowRoot.querySelector('#xxx');
 		this._updateRender();
 	}
 
@@ -62,7 +57,7 @@ class JobPostingViewController extends HTMLElement{
 		if(this.$educationRequirements){ this.$educationRequirements.innerText = this.model.educationRequirements}
 		if(this.$employmentType){ this.$employmentType.innerText = this.model.employmentType}
 		if(this.$experienceRequirements){ this.$experienceRequirements.innerText = this.model.experienceRequirements}
-		if(this.$hiringOrganization){ this.$hiringOrganization.setAttribute('model', JSON.stringify(this.model.hiringOrganization))}
+		//if(this.$hiringOrganization){ this.$hiringOrganization.setAttribute('model', JSON.stringify(this.model.hiringOrganization))}
 		if(this.$incentiveCompensation){ this.$incentiveCompensation.innerText = this.model.incentiveCompensation }
 		if(this.$industry){ this.$industry.innerText = this.model.industry}
 		if(this.$jobBenefits){ this.$jobBenefits.innerText = this.model.jobBenefits}
@@ -81,6 +76,10 @@ class JobPostingViewController extends HTMLElement{
 		if(this.$image && this.model.image){ this.$image.src = this.model.image}
 		//if(this.$xxx){ this.$xxx.innerText = this.model.xxx}
 	}
+
+	get shadowRoot(){return this._shadowRoot;}
+	set shadowRoot(value){ this._shadowRoot = value}
+
 
 	disconnectedCallback() {
 		//console.log('disconnected');
