@@ -1,4 +1,5 @@
-<link rel='import', href='../node_modules/@josebarrios/ui-organization-card/element/index.html'>
+<!--TESTING-->
+<!--<link rel='import', href='../node_modules/@josebarrios/ui-organization-card/element/index.html'>-->
 <link rel='import', href='/ui-organization-card/element/index.html'>
 
 <template id="ui-job-posting-view">
@@ -10,12 +11,12 @@
 
 		.image {
 			background-color:white;
-			width:60px;
-			height:60px;
+			width:100%;
+			height:200px;
 			object-fit: cover;
-			float:left;
 			display:block;
 			margin-bottom:10px;
+			border: 1px solid lightGray;
 		}
 
 		.title {
@@ -25,9 +26,11 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			text-transform: capitalize;
 		}
 
 		button {
+			min-height:66px;
 			margin-top:10px;
 			width: 100%;
 			padding:15px;
@@ -40,9 +43,10 @@
 		}
 
 		.date-posted {
-			padding:0px;
+			padding-top:10px;
+			padding-right:10px;
 			margin:0px;
-			color:gray;
+			color:#8691a9;
 			float:right;
 		}
 
@@ -63,21 +67,24 @@
 
 		.ui-job-posting-container {
 			margin-top:10px;
+			min-width:300px;
 		}
 
 		b {
 			margin-bottom:0px;
 			padding-bottom:0px;
+			font-size:1.1em;
 		}
 		p, span {
+			font-size:1.1em;
 			color:#8691a9;
 		}
 
 		.header {
 			border-bottom: 1px solid #e8ebf2;
-			padding-top:30px !important;
+			//padding-top:30px !important;
 			padding-bottom:30px !important;
-			margin-bottom:40px;
+			margin-bottom:20px;
 		}
 
 		.card {
@@ -99,7 +106,7 @@
 
 
 		.hidden {
-			opacity:0.1;
+			display:none;
 		}
 
 
@@ -137,6 +144,10 @@
 			.col-sm-10 {width: 83.33%; 	height:auto; 	opacity:1;}
 			.col-sm-11 {width: 91.66%; 	height:auto; 	opacity:1;}
 			.col-sm-12 {width: 100%; 		height:auto; 	opacity:1;}
+
+			.date-posted {
+				text-align:center;
+			}
 		}
 
 		@media only screen and (min-width: 600px) {
@@ -153,7 +164,14 @@
 			.col-md-10 {width: 83.33%; 	height:auto; 	opacity:1;}
 			.col-md-11 {width: 91.66%; 	height:auto; 	opacity:1;}
 			.col-md-12 {width: 100%; 		height:auto; 	opacity:1;}
+
+			.date-posted {
+				text-align:right;
+			}
+
+
 		}
+
 		@media only screen and (min-width: 768px) {
 			.col-lg-0 {width: 0%; 			height:0px;		opacity:0;}
 			.col-lg-1 {width: 8.33%; 		height:auto; 	opacity:1;}
@@ -170,99 +188,103 @@
 			.col-lg-12 {width: 100%; 		height:auto; 	opacity:1;}
 		}
 
+		.date-posted {
+				text-align:right;
+			}
+
+
+
+		.employment-type {
+			text-transform: capitalize;
+		}
+
 	</style>
 
+	<img class="image" id="image" src="http://www.himssanalytics.org/sites/himssanalytics/files/homepage-banner_0.jpg" >
 	<ui-organization-card id="hiringOrganization"></ui-organization-card>
+
 	<div class="ui-job-posting-container">
 
- <!--   <div class="row">-->
-			<!--<ui-organization-card id="hiringOrganization"></ui-organization-card>-->
-		<!--</div>-->
-		<!--<div class="row">-->
-			<!--<img class="image" id="image" src="http://coworkingdesign.com/wp-content/uploads/eck-1.jpg">-->
-		<!--</div>-->
-	<!--</div>-->
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 card">
 
-	<div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-12 card">
-
-			<div class="header col-lg-12">
 				<p class="date-posted" id="datePosted">Sep 30th, 2017</p>
-				<b class="title" id="title"> Front-end Developer </b>
-				<br>
-				<span id="jobLocation">San. Francisco, CA</span>
-				<br>
-				<span id="employmentType">Full-Time</span>
-				<span class="work-hours" id="workHours">9am - 5pm</span>
+				<div class="header col-lg-12">
+					<b class="title" id="title"> Front-end Developer </b>
+					<br>
+					<span id="jobLocation">San. Francisco, CA</span>
+					<br>
+					<span class="employment-type" id="employmentType">Full-Time</span>
+					<span class="work-hours" id="workHours">9am - 5pm</span>
+				</div>
+
+				<div class="description-container col-lg-12">
+					<b> Job Description </b>
+					<p id="description">Description</p>
+				</div>
+
+				<div class="skills-container col-lg-12">
+					<b> Skills </b>
+					<p id="skills">skills</p>
+				</div>
+
+				<div class="qualifications-container col-lg-12">
+					<b> Qualifications </b>
+					<p id="qualifications">Qualifications</p>
+				</div>
+
+				<div class="responsibilities-container col-lg-12">
+					<b> Responsibilities </b>
+					<p id="responsibilities">Responsibilities</p>
+				</div>
+
+				<div class="education-container col-lg-12">
+					<b> Education </b>
+					<p id="educationRequirements">educationRequirements</p>
+				</div>
+
+				<div class="experience-requirements-container col-lg-12">
+					<b> Experience </b>
+					<p id="experienceRequirements">experienceRequirements</p>
+				</div>
+
+				<div class="job-benefits-container col-lg-12">
+					<b> Job Benefits </b>
+					<p id="jobBenefits">jobBenefits</p>
+				</div>
+
+				<div class="base-salary-container col-lg-12">
+					<b> Salary </b>
+					<p/>
+						<span id="baseSalary"> 75k </span>
+						<span id="salaryCurrency"> USD</span>
+					</div>
+
+					<div class="incentive-compensation-container col-lg-12">
+						<b> Incentive Compensation </b>
+						<p id="incentiveCompensation">incentiveCompensation</p>
+					</div>
+
+					<div class="special-commitments-container col-lg-12">
+						<b> Special Commitments </b>
+						<p id="specialCommitments">specialCommitments</p>
+					</div>
+
+					<div class="footer col-lg-12">
+						<button > APPLY </button>
+					</div>
+				</div>
+
 			</div>
 
-			<div class="description-container col-lg-12">
-				<b> Job Description </b>
-				<p id="description">Description</p>
+			<!--HIDDEN-->
+			<div class="col-lg-12 hidden">
+				<p id="industry">industry</p>
+				<p id="occupationalCategory">occupationalCategory</p>
+				<p id="validThrough">validThrough</p>
 			</div>
 
-			<div class="skills-container col-lg-12">
-				<b> Skills </b>
-				<p id="skills">skills</p>
-			</div>
+		</template>
 
-			<div class="qualifications-container col-lg-12">
-				<b> Qualifications </b>
-				<p id="qualifications">Qualifications</p>
-			</div>
-
-			<div class="responsibilities-container col-lg-12">
-				<b> Responsibilities </b>
-				<p id="responsibilities">Responsibilities</p>
-			</div>
-
-			<div class="education-container col-lg-12">
-				<b> Education </b>
-				<p id="educationRequirements">educationRequirements</p>
-			</div>
-
-			<div class="experience-requirements-container col-lg-12">
-				<b> Experience </b>
-				<p id="experienceRequirements">experienceRequirements</p>
-			</div>
-
-			<div class="job-benefits-container col-lg-12">
-				<b> Job Benefits </b>
-				<p id="jobBenefits">jobBenefits</p>
-			</div>
-
-			<div class="base-salary-container col-lg-12">
-				<b> Salary </b>
-				<p/>
-				<span id="baseSalary"> 75k </span>
-				<span id="salaryCurrency"> USD</span>
-			</div>
-
-			<div class="incentive-compensation-container col-lg-12">
-				<b> Incentive Compensation </b>
-				<p id="incentiveCompensation">incentiveCompensation</p>
-			</div>
-
-			<div class="special-commitments-container col-lg-12">
-				<b> Special Commitments </b>
-				<p id="specialCommitments">specialCommitments</p>
-			</div>
-
-			<div class="footer col-lg-12">
-				<button > APPLY </button>
-			</div>
-	</div>
-
-</div>
-
-<!--HIDDEN-->
-<div class="col-lg-12 hidden">
-	<p id="industry">industry</p>
-	<p id="occupationalCategory">occupationalCategory</p>
-	<p id="validThrough">validThrough</p>
-</div>
-
-</template>
-
-<script type="text/javascript" src="ui-job-posting-data-controller.js"> </script>
-<script type="text/javascript" src="ui-job-posting-view-controller.js"> </script>
+		<script type="text/javascript" src="ui-job-posting-data-controller.js"> </script>
+		<script type="text/javascript" src="ui-job-posting-view-controller.js"> </script>

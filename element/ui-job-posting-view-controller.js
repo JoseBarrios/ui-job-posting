@@ -23,26 +23,50 @@ class JobPostingViewController extends HTMLElement{
 		this.$baseSalary = this.shadowRoot.querySelector('#baseSalary');
 
 		this.$datePosted = this.shadowRoot.querySelector('#datePosted');
+
 		this.$educationRequirements = this.shadowRoot.querySelector('#educationRequirements');
+		this.$educationRequirementsContainer = this.shadowRoot.querySelector('.education-requirements-container');
+
 		this.$employmentType = this.shadowRoot.querySelector('#employmentType');
+
 		this.$experienceRequirementsContainer = this.shadowRoot.querySelector('.experience-requirements-container');
 		this.$experienceRequirements = this.shadowRoot.querySelector('#experienceRequirements');
+
 		this.$hiringOrganization = this.shadowRoot.querySelector('#hiringOrganization');
+
 		this.$incentiveCompensation = this.shadowRoot.querySelector('#incentiveCompensation');
+		this.$incentiveCompensationContainer = this.shadowRoot.querySelector('.incentive-compensation-container');
+
 		this.$industry = this.shadowRoot.querySelector('#industry');
+
 		this.$jobBenefits = this.shadowRoot.querySelector('#jobBenefits');
+		this.$jobBenefitsContainer = this.shadowRoot.querySelector('.job-benefits-container');
+
 		this.$jobLocation = this.shadowRoot.querySelector('#jobLocation');
+
 		this.$occupationalCategory = this.shadowRoot.querySelector('#occupationalCategory');
+
 		this.$qualifications = this.shadowRoot.querySelector('#qualifications');
+		this.$qualificationsContainer = this.shadowRoot.querySelector('.qualifications-container');
+
 		this.$responsibilities = this.shadowRoot.querySelector('#responsibilities');
+		this.$responsibilitiesContainer = this.shadowRoot.querySelector('.responsibilities-container');
+
 		this.$salaryCurrency = this.shadowRoot.querySelector('#salaryCurrency');
+
 		this.$skills = this.shadowRoot.querySelector('#skills');
+		this.$skillsContainer = this.shadowRoot.querySelector('.skills-container');
+
 		this.$specialCommitments = this.shadowRoot.querySelector('#specialCommitments');
+		this.$specialCommitmentsContainer = this.shadowRoot.querySelector('.special-commitments-container');
+
 		this.$title = this.shadowRoot.querySelector('#title');
 		this.$validThrough = this.shadowRoot.querySelector('#validThrough');
 		this.$workHours = this.shadowRoot.querySelector('#workHours');
 
 		this.$description = this.shadowRoot.querySelector('#description');
+		this.$descriptionContainer = this.shadowRoot.querySelector('.description-container');
+
 		this.$image = this.shadowRoot.querySelector('#image');
 
 		this.connected = true;
@@ -58,38 +82,70 @@ class JobPostingViewController extends HTMLElement{
 		if(this.connected && this.model){
 
 			if(this.$baseSalary && this.model.baseSalary){ this.$baseSalary.innerText = this.model.baseSalary}
-			//else{ this.$baseSalaryContainer.hidden = true}
+			else{ this.$baseSalaryContainer.hidden = true}
 
 			if(this.$datePosted && this.model.datePosted){ this.$datePosted.innerText = this.model.datePosted}
-			//else{ this.$datePosted.hidden = true}
+			else{ this.$datePosted.hidden = true}
 
 			if(this.$educationRequirements && this.model.educationRequirements){ this.$educationRequirements.innerText = this.model.educationRequirements}
-
+			else{ this.$educationRequirementsContainer.hidden = true}
 
 			if(this.$employmentType && this.model.employmentType){ this.$employmentType.innerText = this.model.employmentType}
+			else{ this.$employmentType.hidden = true}
 
-			//Experience Requirements
 			if(this.$experienceRequirements && this.model.experienceRequirements.length){ this.$experienceRequirements.innerText = this.model.experienceRequirements }
-			//else{ this.$experienceRequirementsContainer.hidden = true; }
+			else{ this.$experienceRequirementsContainer.hidden = true; }
 
 			if(this.$hiringOrganization && this.model.hiringOrganization){ this.$hiringOrganization.setAttribute('model', JSON.stringify(this.model.hiringOrganization))}
+			else{ this.$hiringOrganization.hidden = true; }
+
 			if(this.$incentiveCompensation && this.model.incentiveCompensation){ this.$incentiveCompensation.innerText = this.model.incentiveCompensation }
+			else{ this.$incentiveCompensationContainer.hidden = true; }
+
 			if(this.$industry && this.model.industry){ this.$industry.innerText = this.model.industry}
+			else{ this.$industry.hidden = true; }
+
 			if(this.$jobBenefits && this.model.jobBenefits){ this.$jobBenefits.innerText = this.model.jobBenefits}
+			else{ this.$jobBenefitsContainer.hidden = true; }
+
 			if(this.$jobLocation && this.model.jobLocation){ this.$jobLocation.innerText = this.model.jobLocation}
+			else{ this.$jobLocation.hidden = true; }
+
 			if(this.$occupationalCategory && this.model.occupationalCategory){ this.$occupationalCategory.innerText = this.model.occupationalCategory}
+			else{ this.$occupationalCategory.hidden = true; }
+
 			if(this.$qualifications && this.model.qualifications){ this.$qualifications.innerText = this.model.qualifications}
+			else{ this.$qualificationsContainer.hidden = true; }
+
 			if(this.$responsibilities && this.model.responsibilities){ this.$responsibilities.innerText = this.model.responsibilities}
+			else{ this.$responsibilitiesContainer.hidden = true; }
+
 			if(this.$salaryCurrency && this.model.salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency}
+			else{ this.$salaryCurrency.innerText = 'USD'; }
+
 			if(this.$skills && this.model.skills){ this.$skills.innerText = this.model.skills}
+			else{ this.$skillsContainer.hidden = true; }
+
 			if(this.$specialCommitments && this.model.specialCommitments){ this.$specialCommitments.innerText = this.model.specialCommitments}
+			else{ this.$specialCommitmentsContainer.hidden = true; }
+
 			if(this.$title && this.model.title){ this.$title.innerText = this.model.title}
+			else{ this.$title.hidden = true; }
+
 			if(this.$validThrough && this.model.validThrough){ this.$validThrough.innerText = this.model.validThrough}
+			else{ this.$validThrough.hidden = true; }
+
 			if(this.$workHours && this.model.workHours){ this.$workHours.innerText = this.model.workHours}
+			else{ this.$workHours.hidden = true; }
 
 			if(this.$description && this.model.description){ this.$description.innerText = this.model.description}
-			if(this.$image && this.model.hiringOrganization.image){ this.$image.src = this.model.hiringOrganization.image}
-			//if(this.$xxx){ this.$xxx.innerText = this.model.xxx}
+			else{ this.$descriptionContainer.hidden = true; }
+
+			if(this.$image && this.model.image){
+				this.$image.src = this.model.image
+				this.$image.style.display = "block";
+			}
+			else{ this.$image.style.display = "none"; }
 		}
 	}
 
