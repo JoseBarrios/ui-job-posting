@@ -19,10 +19,13 @@ class JobPostingViewController extends HTMLElement{
 	///STANDARD
 	connectedCallback() {
 
+		this.$baseSalaryContainer = this.shadowRoot.querySelector('.base-salary-container');
 		this.$baseSalary = this.shadowRoot.querySelector('#baseSalary');
+
 		this.$datePosted = this.shadowRoot.querySelector('#datePosted');
 		this.$educationRequirements = this.shadowRoot.querySelector('#educationRequirements');
 		this.$employmentType = this.shadowRoot.querySelector('#employmentType');
+		this.$experienceRequirementsContainer = this.shadowRoot.querySelector('.experience-requirements-container');
 		this.$experienceRequirements = this.shadowRoot.querySelector('#experienceRequirements');
 		this.$hiringOrganization = this.shadowRoot.querySelector('#hiringOrganization');
 		this.$incentiveCompensation = this.shadowRoot.querySelector('#incentiveCompensation');
@@ -53,11 +56,22 @@ class JobPostingViewController extends HTMLElement{
 
 	_updateRender(){
 		if(this.connected && this.model){
+
 			if(this.$baseSalary && this.model.baseSalary){ this.$baseSalary.innerText = this.model.baseSalary}
+			//else{ this.$baseSalaryContainer.hidden = true}
+
 			if(this.$datePosted && this.model.datePosted){ this.$datePosted.innerText = this.model.datePosted}
+			//else{ this.$datePosted.hidden = true}
+
 			if(this.$educationRequirements && this.model.educationRequirements){ this.$educationRequirements.innerText = this.model.educationRequirements}
+
+
 			if(this.$employmentType && this.model.employmentType){ this.$employmentType.innerText = this.model.employmentType}
-			if(this.$experienceRequirements && this.model.experienceRequirements){ this.$experienceRequirements.innerText = this.model.experienceRequirements}
+
+			//Experience Requirements
+			if(this.$experienceRequirements && this.model.experienceRequirements.length){ this.$experienceRequirements.innerText = this.model.experienceRequirements }
+			//else{ this.$experienceRequirementsContainer.hidden = true; }
+
 			if(this.$hiringOrganization && this.model.hiringOrganization){ this.$hiringOrganization.setAttribute('model', JSON.stringify(this.model.hiringOrganization))}
 			if(this.$incentiveCompensation && this.model.incentiveCompensation){ this.$incentiveCompensation.innerText = this.model.incentiveCompensation }
 			if(this.$industry && this.model.industry){ this.$industry.innerText = this.model.industry}
@@ -74,7 +88,7 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$workHours && this.model.workHours){ this.$workHours.innerText = this.model.workHours}
 
 			if(this.$description && this.model.description){ this.$description.innerText = this.model.description}
-			if(this.$image && this.model.image){ this.$image.src = this.model.image}
+			if(this.$image && this.model.hiringOrganization.image){ this.$image.src = this.model.hiringOrganization.image}
 			//if(this.$xxx){ this.$xxx.innerText = this.model.xxx}
 		}
 	}
