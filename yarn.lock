@@ -26,25 +26,11 @@
   dependencies:
     lodash "^4.17.4"
 
-"@josebarrios/ui-job-posting-card@^0.1.12":
+"@josebarrios/ui-organization-card@^0.1.12":
   version "0.1.14"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-job-posting-card/-/ui-job-posting-card-0.1.14.tgz#adf9551730c545e8555485176ba1fb912760cd34"
-  dependencies:
-    "@josebarrios/job-posting" "^0.2.0"
-
-"@josebarrios/ui-login@^0.1.18":
-  version "0.1.20"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-login/-/ui-login-0.1.20.tgz#301d18f8aa9e2b4a13337f515f567393c2cf6c9c"
-  dependencies:
-    "@josebarrios/ui-job-posting-card" "^0.1.12"
-    "@josebarrios/ui-organization-card" "^0.1.3"
-
-"@josebarrios/ui-organization-card@^0.1.12", "@josebarrios/ui-organization-card@^0.1.3":
-  version "0.1.13"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.1.13.tgz#172b3be2ad030cfb6be9367b0bd17c28598f18c2"
+  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.1.14.tgz#2e77dd7055c2bbfc1d816c1a7c705b84841eb464"
   dependencies:
     "@josebarrios/organization" "^1.1.7"
-    "@josebarrios/ui-login" "^0.1.18"
 
 abbrev@1:
   version "1.1.0"
