@@ -27,8 +27,8 @@
     lodash "^4.17.4"
 
 "@josebarrios/ui-organization-card@^0.1.12":
-  version "0.1.14"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.1.14.tgz#2e77dd7055c2bbfc1d816c1a7c705b84841eb464"
+  version "0.1.15"
+  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.1.15.tgz#a772c3a16a993d4de7dd2e892719683fb4628bb4"
   dependencies:
     "@josebarrios/organization" "^1.1.7"
 

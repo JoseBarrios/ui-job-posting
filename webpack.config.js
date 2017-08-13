@@ -5,7 +5,7 @@ const config = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'element'),
-    filename: 'data-controller.js'
+    filename: 'ui-job-posting-data-controller.js'
   },
 };
 
