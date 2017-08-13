@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "@josebarrios/job-posting": "^0.2.0",
-    "@josebarrios/ui-organization-card": "0.1.12"
+    "@josebarrios/ui-organization-card": "^0.1.12"
   }
 }

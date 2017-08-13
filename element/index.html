@@ -1,12 +1,148 @@
+<!--<link rel='import', href='../node_modules/@josebarrios/ui-organization-card/element/index.html'>-->
 <link rel='import', href='/ui-organization-card/element/index.html'>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 
 <template id="ui-job-posting-view">
 
+	<style>
+		.image {
+			background-color:white;
+			width:100%;
+			height:150px;
+			object-fit: cover;
+		}
+
+		button {
+			width: calc(100% - 20px);
+			padding:20px !important;
+			cursor: pointer;
+		}
+
+		.date-posted {
+			text-align:right;
+			padding:0px;
+			margin:0px;
+			line-height:1em;
+			font-size:1em;
+		}
+
+		.title {
+			padding:0px;
+			margin:0px;
+		}
+
+		.work-hours {
+			padding:0px;
+			margin:0px;
+			color:gray;
+		}
+		.work-hours::before {
+			content: "("
+		}
+		.work-hours::after {
+			content: ")"
+		}
+
+		.employment-type {
+			text-align:center;
+		}
+		.base-salary {
+			text-align:right;
+		}
+
+		#title {
+			font-size:2em;
+			text-align:left;
+		}
+
+		.ui-job-posting-container {
+			/*background-color:red;*/
+		}
+
+		.ui-job-posting-left-container {
+			background-color:green;
+		}
+
+		.ui-job-posting-right-container {
+			background-color:yellow;
+		}
+
+		.hidden {
+			opacity:0.1;
+		}
+
+
+		* {
+			box-sizing: border-box;
+		}
+
+		[class*="col-"] {
+			float: left;
+			padding: 10px;
+			border: 1px solid darkGray;
+		}
+
+		.row::after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+
+		[class*="col-"] {
+			width: 100%;
+		}
+
+		@media only screen and (min-width: 0px) {
+			.col-sm-1 {width: 8.33%;}
+			.col-sm-2 {width: 16.66%;}
+			.col-sm-3 {width: 25%;}
+			.col-sm-4 {width: 33.33%;}
+			.col-sm-5 {width: 41.66%;}
+			.col-sm-6 {width: 50%;}
+			.col-sm-7 {width: 58.33%;}
+			.col-sm-8 {width: 66.66%;}
+			.col-sm-9 {width: 75%;}
+			.col-sm-10 {width: 83.33%;}
+			.col-sm-11 {width: 91.66%;}
+			.col-sm-12 {width: 100%;}
+		}
+
+		@media only screen and (min-width: 600px) {
+			/* For tablets: */
+			.col-md-1 {width: 8.33%;}
+			.col-md-2 {width: 16.66%;}
+			.col-md-3 {width: 25%;}
+			.col-md-4 {width: 33.33%;}
+			.col-md-5 {width: 41.66%;}
+			.col-md-6 {width: 50%;}
+			.col-md-7 {width: 58.33%;}
+			.col-md-8 {width: 66.66%;}
+			.col-md-9 {width: 75%;}
+			.col-md-10 {width: 83.33%;}
+			.col-md-11 {width: 91.66%;}
+			.col-md-12 {width: 100%;}
+		}
+		@media only screen and (min-width: 768px) {
+			/* For desktop: */
+			.col-lg-1 {width: 8.33%;}
+			.col-lg-2 {width: 16.66%;}
+			.col-lg-3 {width: 25%;}
+			.col-lg-4 {width: 33.33%;}
+			.col-lg-5 {width: 41.66%;}
+			.col-lg-6 {width: 50%;}
+			.col-lg-7 {width: 58.33%;}
+			.col-lg-8 {width: 66.66%;}
+			.col-lg-9 {width: 75%;}
+			.col-lg-10 {width: 83.33%;}
+			.col-lg-11 {width: 91.66%;}
+			.col-lg-12 {width: 100%;}
+		}
+	</style>
+
 	<div class="ui-job-posting-container">
 
 		<div class="row">
-			<ui-organization-card model='{"image":"https://www.hispanicizewire.com/wp-content/uploads/2017/05/BE-FEATURED.jpg", "name":"Cognilab Technologies", "disambiguatingDescription": "Some Company", "address":{ "addressLocality":"Victoria", "addressRegion": "BC"}, "description":"Some description of the company goes here. One, two three, four, five, six, seven, eight, nine, ten. One, two, three, four, five, six, seven, eight, nine, ten. One, two three, four, five, six, seven, eight, nine, ten. One, two three, four, five, six, seven, eight, nine, ten. One, two three, four, five, six, seven, eight, nine, ten." }'></ui-organization-card>
+			<ui-organization-card id="hiringOrganization"></ui-organization-card>
 		</div>
 		<div class="row">
 			<img class="image" id="image" src="http://coworkingdesign.com/wp-content/uploads/eck-1.jpg">
@@ -19,19 +155,17 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<p class="date-posted" id="datePosted">Sep 30th, 2017</p>
-					<p class="title" id="title">
-						Front-end Developer
+					<span class="title" id="title"> Front-end Developer </span>
 					<span class="work-hours" id="workHours">workHours</span>
-					</p>
 				</div>
 			</div>
 			<div class="row">
-				<span class="col-lg-4" id="jobLocation">San. Francisco, CA</span>
-				<span class="col-lg-4" id="employmentType">Full-Time</span>
-				<span class="col-lg-4" id="baseSalary">
-					75k
+				<span class="col-lg-4 col-md-4" id="jobLocation">San. Francisco, CA</span>
+				<span class="col-lg-4 col-md-4" id="employmentType">Full-Time</span>
+				<div class="col-lg-4 col-md-4">
+					<span id="baseSalary"> 75k </span>
 					<span id="salaryCurrency">USD</span>
-				</span>
+				</div>
 			</div>
 			<div class="row">
 				<p class="col-lg-12" id="description">Description</p>
@@ -66,7 +200,6 @@
 		</div>
 	</div>
 </div>
-<!--<p id="hiringOrganization">hiringOrganization</p>-->
 
 <!--HIDDEN-->
 <div class="col-lg-12 hidden">
