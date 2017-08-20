@@ -10,7 +10,7 @@ class JobPostingViewController extends HTMLElement{
 
   constructor(model){
     super();
-		this.model = model || {};
+		this.model = new JobPosting(model);
 		const view = document.importNode(uiJobPostingTemplate.content, true);
 		this.shadowRoot = this.attachShadow({mode: 'open'});
 		this.shadowRoot.appendChild(view);
@@ -86,10 +86,10 @@ class JobPostingViewController extends HTMLElement{
 		if(this.connected && this.model){
 
 			if(this.$baseSalary && this.model.baseSalary){ this.$baseSalary.innerText = this.model.baseSalary}
-			else{ this.$baseSalaryContainer.hidden = true}
+			//else{ this.$baseSalaryContainer.hidden = true}
 
 			if(this.$datePosted && this.model.datePosted){ this.$datePosted.innerText = this.model.datePosted}
-			else{ this.$datePosted.hidden = true}
+			//else{ this.$datePosted.hidden = true}
 
 			//EDUCATION REQUIREMENTS
 			if(this.$educationRequirements && this.model.educationRequirements){
@@ -101,23 +101,24 @@ class JobPostingViewController extends HTMLElement{
 					p.style.margin = this.listOffset;
 					this.$educationRequirements.appendChild(p);
 				})
-			} else{ this.$educationRequirementsContainer.hidden = true}
+			}
+			//else{ this.$educationRequirementsContainer.hidden = true}
 
 
 			if(this.$employmentType && this.model.employmentType){ this.$employmentType.innerText = this.model.employmentType}
-			else{ this.$employmentType.hidden = true}
+			//else{ this.$employmentType.hidden = true}
 
 			if(this.$experienceRequirements && this.model.experienceRequirements.length){ this.$experienceRequirements.innerText = this.model.experienceRequirements }
-			else{ this.$experienceRequirementsContainer.hidden = true; }
+			//else{ this.$experienceRequirementsContainer.hidden = true; }
 
 			if(this.$hiringOrganization && this.model.hiringOrganization){ this.$hiringOrganization.setAttribute('model', JSON.stringify(this.model.hiringOrganization))}
-			else{ this.$hiringOrganization.hidden = true; }
+			//else{ this.$hiringOrganization.hidden = true; }
 
 			if(this.$incentiveCompensation && this.model.incentiveCompensation){ this.$incentiveCompensation.innerText = this.model.incentiveCompensation }
-			else{ this.$incentiveCompensationContainer.hidden = true; }
+			//else{ this.$incentiveCompensationContainer.hidden = true; }
 
 			if(this.$industry && this.model.industry){ this.$industry.innerText = this.model.industry}
-			else{ this.$industry.hidden = true; }
+			//else{ this.$industry.hidden = true; }
 
 			//JOB BENEFITS
 			if(this.$jobBenefits && this.model.jobBenefits){
@@ -130,13 +131,14 @@ class JobPostingViewController extends HTMLElement{
 					//p.style.margin = this.listOffset;
 					//this.$jobBenefits.appendChild(p);
 				//})
-			} else{ this.$jobBenefitsContainer.hidden = true; }
+			}
+			//else{ this.$jobBenefitsContainer.hidden = true; }
 
 			if(this.$jobLocation && this.model.jobLocation){ this.$jobLocation.innerText = this.model.jobLocation}
-			else{ this.$jobLocation.hidden = true; }
+			//else{ this.$jobLocation.hidden = true; }
 
 			if(this.$occupationalCategory && this.model.occupationalCategory){ this.$occupationalCategory.innerText = this.model.occupationalCategory}
-			else{ this.$occupationalCategory.hidden = true; }
+			//else{ this.$occupationalCategory.hidden = true; }
 
 			//QUALIFICATIONS
 			if(this.$qualifications && this.model.qualifications){
@@ -148,7 +150,8 @@ class JobPostingViewController extends HTMLElement{
 					p.style.margin = this.listOffset;
 					this.$qualifications.appendChild(p);
 				})
-			} else{ this.$qualificationsContainer.hidden = true; }
+			}
+			//else{ this.$qualificationsContainer.hidden = true; }
 
 			//RESPONSABILITIES
 			if(this.$responsibilities && this.model.responsibilities){
@@ -162,35 +165,35 @@ class JobPostingViewController extends HTMLElement{
 						this.$responsibilities.appendChild(p);
 					}
 				})
-			} else{ this.$responsibilitiesContainer.hidden = true; }
-
+			}
+			//else{ this.$responsibilitiesContainer.hidden = true; }
 
 			if(this.$salaryCurrency && this.model.salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency}
-			else{ this.$salaryCurrency.innerText = 'USD'; }
+			//else{ this.$salaryCurrency.innerText = 'USD'; }
 
 			if(this.$skills && this.model.skills){ this.$skills.innerText = this.model.skills}
-			else{ this.$skillsContainer.hidden = true; }
+			//else{ this.$skillsContainer.hidden = true; }
 
 			if(this.$specialCommitments && this.model.specialCommitments){ this.$specialCommitments.innerText = this.model.specialCommitments}
-			else{ this.$specialCommitmentsContainer.hidden = true; }
+			//else{ this.$specialCommitmentsContainer.hidden = true; }
 
 			if(this.$title && this.model.title){ this.$title.innerText = this.model.title}
-			else{ this.$title.hidden = true; }
+			//else{ this.$title.hidden = true; }
 
 			if(this.$validThrough && this.model.validThrough){ this.$validThrough.innerText = this.model.validThrough}
-			else{ this.$validThrough.hidden = true; }
+			//else{ this.$validThrough.hidden = true; }
 
 			if(this.$workHours && this.model.workHours){ this.$workHours.innerText = this.model.workHours}
-			else{ this.$workHours.hidden = true; }
+			//else{ this.$workHours.hidden = true; }
 
 			if(this.$description && this.model.description){ this.$description.innerText = this.model.description}
-			else{ this.$descriptionContainer.hidden = true; }
+			//else{ this.$descriptionContainer.hidden = true; }
 
 			if(this.$image && this.model.image){
 				this.$image.src = this.model.image
 				this.$image.style.display = "block";
 			}
-			else{ this.$image.style.display = "none"; }
+			//else{ this.$image.style.display = "none"; }
 		}
 	}
 
