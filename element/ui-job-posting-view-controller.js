@@ -183,7 +183,18 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$salaryCurrency && this.model.salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency}
 			//else{ this.$salaryCurrency.innerText = 'USD'; }
 
-			if(this.$skills && this.model.skills){ this.$skills.innerText = this.model.skills}
+			if(this.$skills && this.model.skills){
+				this.$skills.innerText = '';
+				this.model.skills.forEach((requirement,index) => {
+					if(requirement && requirement !== ''){
+						var p = document.createElement('p');
+						p.innerText = `• ${requirement}`;
+						p.style.paddingLeft = this.listOffset;
+						p.style.margin = this.listOffset;
+						this.$skills.appendChild(p);
+					}
+				})
+			}
 			//else{ this.$skillsContainer.hidden = true; }
 
 			if(this.$specialCommitments && this.model.specialCommitments){ this.$specialCommitments.innerText = this.model.specialCommitments}
