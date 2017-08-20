@@ -8,8 +8,9 @@ class JobPostingViewController extends HTMLElement{
 		return ["model"];
 	}
 
-  constructor(){
+  constructor(model){
     super();
+		this.model = model || {};
 		const view = document.importNode(uiJobPostingTemplate.content, true);
 		this.shadowRoot = this.attachShadow({mode: 'open'});
 		this.shadowRoot.appendChild(view);
