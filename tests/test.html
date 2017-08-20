@@ -12,4 +12,13 @@
 	$jobPosting.addEventListener('update', function(e){ console.log('FIRED EVENT', e) })
 	$jobPosting.title = 'HELLO WORLD'
 	$jobPosting.employmentType = 'HELLO EMP'
+	$jobPosting.baseSalary = '75000'
+	$jobPosting.workHours = '1am to 5pm'
+	$jobPosting.description = 'The job description goes here'
+	let array = [];
+	array.push('one')
+	array.push('two')
+	array.push('three')
+	$jobPosting.qualifications = array;
+console.log($jobPosting.model)
 </script>

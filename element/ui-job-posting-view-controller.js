@@ -16,6 +16,7 @@ class JobPostingViewController extends HTMLElement{
 		this.shadowRoot.appendChild(view);
 		this.connected = false;
 		this.listOffset = '0.8em';
+
 		this.updateEvent = new Event('update');
   }
 
@@ -204,9 +205,22 @@ class JobPostingViewController extends HTMLElement{
 	get shadowRoot(){return this._shadowRoot;}
 	set shadowRoot(value){ this._shadowRoot = value}
 
-	get title(){return this.model.title;}
-	set title(value){
-		this.model.title = value
+
+	get baseSalary(){return this.model.baseSalary;}
+	set baseSalary(value){
+		this.model.baseSalary = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get datePosted(){return this.model.datePosted;}
+	set datePosted(value){
+		this.model.datePosted = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get educationRequirements(){return this.model.educationRequirements;}
+	set educationRequirements(value){
+		this.model.educationRequirements = value
 		this.setAttribute('model', this.stringifiedModel());
 	}
 
@@ -216,14 +230,161 @@ class JobPostingViewController extends HTMLElement{
 		this.setAttribute('model', this.stringifiedModel());
 	}
 
-	get xxx(){return this.model.xxx;}
-	set xxx(value){
-		this.model.xxx = value
+	get experienceRequirements(){return this.model.experienceRequirements;}
+	set experienceRequirements(value){
+		this.model.experienceRequirements = value
 		this.setAttribute('model', this.stringifiedModel());
 	}
 
+	get hiringOrganization(){return this.model.hiringOrganization;}
+	set hiringOrganization(value){
+		this.model.hiringOrganization = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
 
+	get incentiveCompensation(){return this.model.incentiveCompensation;}
+	set incentiveCompensation(value){
+		this.model.incentiveCompensation = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
 
+	get industry(){return this.model.industry;}
+	set industry(value){
+		this.model.industry = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get jobBenefits(){return this.model.jobBenefits;}
+	set jobBenefits(value){
+		this.model.jobBenefits = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get jobLocation(){return this.model.jobLocation;}
+	set jobLocation(value){
+		this.model.jobLocation = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get occupationalCategory(){return this.model.occupationalCategory;}
+	set occupationalCategory(value){
+		this.model.occupationalCategory = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get qualifications(){return this.model.qualifications;}
+	set qualifications(value){
+		this.model.qualifications = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get responsibilities(){return this.model.responsibilities;}
+	set responsibilities(value){
+		this.model.responsibilities = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get salaryCurrency(){return this.model.salaryCurrency;}
+	set salaryCurrency(value){
+		this.model.salaryCurrency = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get skills(){return this.model.skills;}
+	set skills(value){
+		this.model.skills = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get specialCommitments(){return this.model.specialCommitments;}
+	set specialCommitments(value){
+		this.model.specialCommitments = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get title(){return this.model.title;}
+	set title(value){
+		this.model.title = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get validThrough(){return this.model.validThrough;}
+	set validThrough(value){
+		this.model.validThrough = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get workHours(){return this.model.workHours;}
+	set workHours(value){
+		this.model.workHours = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get additionalType(){return this.model.additionalType;}
+	set additionalType(value){
+		this.model.additionalType = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get alternateName(){return this.model.alternateName;}
+	set alternateName(value){
+		this.model.alternateName = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get description(){return this.model.description;}
+	set description(value){
+		this.model.description = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get disambiguatingDescription(){return this.model.disambiguatingDescription;}
+	set disambiguatingDescription(value){
+		this.model.disambiguatingDescription = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get identifier(){return this.model.identifier;}
+	set identifier(value){
+		this.model.identifier = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get image(){return this.model.image;}
+	set image(value){
+		this.model.image = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get mainEntityOfPage(){return this.model.mainEntityOfPage;}
+	set mainEntityOfPage(value){
+		this.model.mainEntityOfPage = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get name(){return this.model.name;}
+	set name(value){
+		this.model.name = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get potentialAction(){return this.model.potentialAction;}
+	set potentialAction(value){
+		this.model.potentialAction = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get sameAs(){return this.model.sameAs;}
+	set sameAs(value){
+		this.model.sameAs = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get url(){return this.model.url;}
+	set url(value){
+		this.model.url = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
 
 	disconnectedCallback() {
 		//console.log('disconnected');
