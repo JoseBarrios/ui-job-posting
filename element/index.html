@@ -1,5 +1,5 @@
 <!--TESTING-->
-<!--<link rel='import', href='../node_modules/@josebarrios/ui-organization-card/element/index.html'>-->
+<link rel='import', href='../node_modules/@josebarrios/ui-organization-card/element/index.html'>
 <link rel='import', href='/ui-organization-card/element/index.html'>
 
 <template id="ui-job-posting-view">
@@ -75,7 +75,7 @@
 			padding-bottom:0px;
 			font-size:1.1em;
 		}
-		p, span {
+		p, span, i {
 			font-size:1.1em;
 			color:#8691a9;
 		}
@@ -186,12 +186,12 @@
 			.col-lg-10 {width: 83.33%; 	height:auto; 	opacity:1;}
 			.col-lg-11 {width: 91.66%; 	height:auto; 	opacity:1;}
 			.col-lg-12 {width: 100%; 		height:auto; 	opacity:1;}
-		}
 
 		.date-posted {
 				text-align:right;
 			}
 
+		}
 
 
 		.employment-type {
@@ -265,12 +265,10 @@
 						<p id="incentiveCompensation">incentiveCompensation</p>
 					</div>
 
-					<div class="special-commitments-container col-lg-12">
-						<b> Special Commitments </b>
-						<p id="specialCommitments">specialCommitments</p>
-					</div>
-
 					<div class="footer col-lg-12">
+						<div class="special-commitments-container col-lg-12">
+							<i id="specialCommitments">specialCommitments</i>
+						</div>
 						<button > APPLY </button>
 					</div>
 				</div>

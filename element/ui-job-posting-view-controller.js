@@ -14,6 +14,8 @@ class JobPostingViewController extends HTMLElement{
 		this.shadowRoot = this.attachShadow({mode: 'open'});
 		this.shadowRoot.appendChild(view);
 		this.connected = false;
+		this.listOffset = '0.8em';
+		this.updateEvent = new Event('update');
   }
 
 	///STANDARD
@@ -76,6 +78,7 @@ class JobPostingViewController extends HTMLElement{
 	attributeChangedCallback(attrName, oldVal, newVal) {
 		this.model = new JobPosting(JSON.parse(newVal));
 		this._updateRender();
+		this.dispatchEvent(this.updateEvent);
 	}
 
 	_updateRender(){
@@ -87,8 +90,18 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$datePosted && this.model.datePosted){ this.$datePosted.innerText = this.model.datePosted}
 			else{ this.$datePosted.hidden = true}
 
-			if(this.$educationRequirements && this.model.educationRequirements){ this.$educationRequirements.innerText = this.model.educationRequirements}
-			else{ this.$educationRequirementsContainer.hidden = true}
+			//EDUCATION REQUIREMENTS
+			if(this.$educationRequirements && this.model.educationRequirements){
+				this.$educationRequirements.innerText = '';
+				this.model.educationRequirements.forEach(requirement => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$educationRequirements.appendChild(p);
+				})
+			} else{ this.$educationRequirementsContainer.hidden = true}
+
 
 			if(this.$employmentType && this.model.employmentType){ this.$employmentType.innerText = this.model.employmentType}
 			else{ this.$employmentType.hidden = true}
@@ -105,8 +118,18 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$industry && this.model.industry){ this.$industry.innerText = this.model.industry}
 			else{ this.$industry.hidden = true; }
 
-			if(this.$jobBenefits && this.model.jobBenefits){ this.$jobBenefits.innerText = this.model.jobBenefits}
-			else{ this.$jobBenefitsContainer.hidden = true; }
+			//JOB BENEFITS
+			if(this.$jobBenefits && this.model.jobBenefits){
+				this.$jobBenefits.innerText = '';
+				this.$jobBenefits.innerText = this.model.jobBenefits;
+				//this.model.jobBenefits.forEach(requirement => {
+					//var p = document.createElement('p');
+					//p.innerText = `• ${requirement}`;
+					//p.style.paddingLeft = this.listOffset;
+					//p.style.margin = this.listOffset;
+					//this.$jobBenefits.appendChild(p);
+				//})
+			} else{ this.$jobBenefitsContainer.hidden = true; }
 
 			if(this.$jobLocation && this.model.jobLocation){ this.$jobLocation.innerText = this.model.jobLocation}
 			else{ this.$jobLocation.hidden = true; }
@@ -114,11 +137,32 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$occupationalCategory && this.model.occupationalCategory){ this.$occupationalCategory.innerText = this.model.occupationalCategory}
 			else{ this.$occupationalCategory.hidden = true; }
 
-			if(this.$qualifications && this.model.qualifications){ this.$qualifications.innerText = this.model.qualifications}
-			else{ this.$qualificationsContainer.hidden = true; }
+			//QUALIFICATIONS
+			if(this.$qualifications && this.model.qualifications){
+				this.$qualifications.innerText = '';
+				this.model.qualifications.forEach(requirement => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$qualifications.appendChild(p);
+				})
+			} else{ this.$qualificationsContainer.hidden = true; }
 
-			if(this.$responsibilities && this.model.responsibilities){ this.$responsibilities.innerText = this.model.responsibilities}
-			else{ this.$responsibilitiesContainer.hidden = true; }
+			//RESPONSABILITIES
+			if(this.$responsibilities && this.model.responsibilities){
+				this.$responsibilities.innerText = '';
+				this.model.responsibilities.forEach((requirement,index) => {
+					if(requirement && requirement !== ''){
+						var p = document.createElement('p');
+						p.innerText = `• ${requirement}`;
+						p.style.paddingLeft = this.listOffset;
+						p.style.margin = this.listOffset;
+						this.$responsibilities.appendChild(p);
+					}
+				})
+			} else{ this.$responsibilitiesContainer.hidden = true; }
+
 
 			if(this.$salaryCurrency && this.model.salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency}
 			else{ this.$salaryCurrency.innerText = 'USD'; }
@@ -149,8 +193,32 @@ class JobPostingViewController extends HTMLElement{
 		}
 	}
 
+	stringifiedModel(){
+		return JSON.stringify(JobPosting.assignedProperties(this.model));
+	}
+
 	get shadowRoot(){return this._shadowRoot;}
 	set shadowRoot(value){ this._shadowRoot = value}
+
+	get title(){return this.model.title;}
+	set title(value){
+		this.model.title = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get employmentType(){return this.model.employmentType;}
+	set employmentType(value){
+		this.model.employmentType = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+	get xxx(){return this.model.xxx;}
+	set xxx(value){
+		this.model.xxx = value
+		this.setAttribute('model', this.stringifiedModel());
+	}
+
+
 
 
 	disconnectedCallback() {
