@@ -50,8 +50,8 @@ class JobPostingViewController extends HTMLElement{
 
 		this.$occupationalCategory = this.shadowRoot.querySelector('#occupationalCategory');
 
-		this.$qualifications = this.shadowRoot.querySelector('#qualifications');
 		this.$qualificationsContainer = this.shadowRoot.querySelector('.qualifications-container');
+		this.$qualifications = this.shadowRoot.querySelector('#qualifications');
 
 		this.$responsibilities = this.shadowRoot.querySelector('#responsibilities');
 		this.$responsibilitiesContainer = this.shadowRoot.querySelector('.responsibilities-container');
@@ -93,7 +93,7 @@ class JobPostingViewController extends HTMLElement{
 			//else{ this.$datePosted.hidden = true}
 
 			//EDUCATION REQUIREMENTS
-			if(this.$educationRequirements && this.model.educationRequirements){
+			if(this.$educationRequirements && this.model.educationRequirements.length){
 				this.$educationRequirements.innerText = '';
 				this.model.educationRequirements.forEach(requirement => {
 					var p = document.createElement('p');
@@ -109,7 +109,16 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$employmentType && this.model.employmentType){ this.$employmentType.innerText = this.model.employmentType}
 			//else{ this.$employmentType.hidden = true}
 
-			if(this.$experienceRequirements && this.model.experienceRequirements.length){ this.$experienceRequirements.innerText = this.model.experienceRequirements }
+			if(this.$experienceRequirements && this.model.experienceRequirements.length){
+				this.$experienceRequirements.innerText = '';
+				this.model.experienceRequirements.forEach(requirement => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$experienceRequirements.appendChild(p);
+				})
+			}
 			//else{ this.$experienceRequirementsContainer.hidden = true; }
 
 			if(this.$hiringOrganization && this.model.hiringOrganization){ this.$hiringOrganization.setAttribute('model', JSON.stringify(this.model.hiringOrganization))}
@@ -135,14 +144,16 @@ class JobPostingViewController extends HTMLElement{
 			}
 			//else{ this.$jobBenefitsContainer.hidden = true; }
 
-			if(this.$jobLocation && this.model.jobLocation){ this.$jobLocation.innerText = this.model.jobLocation}
+			if(this.$jobLocation && this.model.jobLocation){
+				this.$jobLocation.innerText = `${this.model.jobLocation.addressLocality}, ${this.model.jobLocation.addressRegion} ${this.model.jobLocation.addressCountry === 'United States'? '' : "("+this.model.jobLocation.addressCountry+")"}`
+			}
 			//else{ this.$jobLocation.hidden = true; }
 
 			if(this.$occupationalCategory && this.model.occupationalCategory){ this.$occupationalCategory.innerText = this.model.occupationalCategory}
 			//else{ this.$occupationalCategory.hidden = true; }
 
 			//QUALIFICATIONS
-			if(this.$qualifications && this.model.qualifications){
+			if(this.$qualifications && this.model.qualifications.length){
 				this.$qualifications.innerText = '';
 				this.model.qualifications.forEach(requirement => {
 					var p = document.createElement('p');
@@ -155,7 +166,7 @@ class JobPostingViewController extends HTMLElement{
 			//else{ this.$qualificationsContainer.hidden = true; }
 
 			//RESPONSABILITIES
-			if(this.$responsibilities && this.model.responsibilities){
+			if(this.$responsibilities && this.model.responsibilities.length){
 				this.$responsibilities.innerText = '';
 				this.model.responsibilities.forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
