@@ -88,15 +88,12 @@ class JobPostingViewController extends HTMLElement{
 				value.hiringOrganization.address = PostalAddress.assignedProperties(this.model.hiringOrganization.address)
 			}
 		}
-		console.log('GET', value, this.model);
 		return value;
 	}
 	set value(value){
 		this.model = new JobPosting(value);
 		this.model.hiringOrganization = new Organization(value.hiringOrganization);
 		this.model.hiringOrganization.address = new PostalAddress(this.model.hiringOrganization.address);
-
-
 		//DO NOT UPDATE ATTRIBUTE HERE, OTHERWISE INFINITE LOOP HAPPENS
 		this._updateRender();
 		this._updateEvent();
@@ -434,7 +431,6 @@ class JobPostingViewController extends HTMLElement{
 
 			if(this.$specialCommitments && this.model.specialCommitments){ this.$specialCommitments.innerText = this.model.specialCommitments}
 			//if(!this.preview){ this.$specialCommitmentsContainer.hidden = true; }
-			console.log(this.$specialCommitmentsContainer)
 
 			if(this.$title && this.model.title){ this.$title.innerText = this.model.title}
 			//else{ this.$title.hidden = true; }
