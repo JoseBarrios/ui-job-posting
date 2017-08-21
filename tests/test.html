@@ -21,7 +21,7 @@
 	array.push('one')
 	array.push('two')
 	array.push('three')
-	//$jobPosting.experienceRequirements = array;
+	$jobPosting.skills = array;
 
 	let jobLocation = {};
 	jobLocation.addressCountry = 'Canada';
@@ -29,5 +29,10 @@
 	jobLocation.addressRegion = 'BC';
 	jobLocation.postalCode = 'V8W 1L4';
 	//$jobPosting.jobLocation = jobLocation;
+
+//Can modify all at once
+$jobPosting.value = {"type":"JobPosting","skills":["uno","dos","tres"]}
+//Or one by one
+$jobPosting.title = 'IT WORKS!'
 
 </script>
