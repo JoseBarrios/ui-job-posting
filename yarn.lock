@@ -2,13 +2,19 @@
 # yarn lockfile v1
 
 
-"@josebarrios/intangible@^0.1.2":
+"@josebarrios/contact-point@^0.1.1":
+  version "0.1.3"
+  resolved "https://registry.npmjs.org/@josebarrios/contact-point/-/contact-point-0.1.3.tgz#5618f0b04f0f990bb32f5c02c4f648fa30275ee0"
+  dependencies:
+    "@josebarrios/structured-value" "^0.1.1"
+
+"@josebarrios/intangible@^0.1.1", "@josebarrios/intangible@^0.1.2":
   version "0.1.2"
   resolved "https://registry.npmjs.org/@josebarrios/intangible/-/intangible-0.1.2.tgz#1c8f9f726fd39bc72b4796e76dceefa1b70af92e"
   dependencies:
     "@josebarrios/thing" "^0.3.19"
 
-"@josebarrios/job-posting@^0.2.0":
+"@josebarrios/job-posting@^0.2.1":
   version "0.2.1"
   resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.1.tgz#5d6a7f5200a9b509c055b1ebeaa8e15df67fdbe1"
   dependencies:
@@ -20,6 +26,18 @@
   dependencies:
     "@josebarrios/thing" "^0.3.10"
 
+"@josebarrios/postal-address@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.npmjs.org/@josebarrios/postal-address/-/postal-address-0.1.7.tgz#1913cde10e8dc787cdd3b04c501611eec54e6fc9"
+  dependencies:
+    "@josebarrios/contact-point" "^0.1.1"
+
+"@josebarrios/structured-value@^0.1.1":
+  version "0.1.5"
+  resolved "https://registry.npmjs.org/@josebarrios/structured-value/-/structured-value-0.1.5.tgz#850b45e7b49c71f04f14b6410a114ec5adeb310d"
+  dependencies:
+    "@josebarrios/intangible" "^0.1.1"
+
 "@josebarrios/thing@^0.3.10", "@josebarrios/thing@^0.3.19":
   version "0.3.32"
   resolved "https://registry.npmjs.org/@josebarrios/thing/-/thing-0.3.32.tgz#663f987ac24affdc45f8f2ba02da61635b1779bb"
@@ -27,10 +45,11 @@
     lodash "^4.17.4"
 
 "@josebarrios/ui-organization-card@^0.2.2":
-  version "0.2.4"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.2.4.tgz#75ce32d147f930bca8f788bb413393c28fe5899a"
+  version "0.2.6"
+  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.2.6.tgz#ac1bc66febf5c6780fad0bd7feba543f48ff2544"
   dependencies:
     "@josebarrios/organization" "^1.1.7"
+    "@josebarrios/postal-address" "^0.1.7"
 
 abbrev@1:
   version "1.1.0"
@@ -2159,8 +2178,8 @@ source-list-map@^2.0.0:
   resolved "https://registry.npmjs.org/source-list-map/-/source-list-map-2.0.0.tgz#aaa47403f7b245a92fbc97ea08f250d6087ed085"
 
 source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3:
-  version "0.5.6"
-  resolved "https://registry.npmjs.org/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+  version "0.5.7"
+  resolved "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
 spdx-correct@~1.0.0:
   version "1.0.2"
