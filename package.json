@@ -33,6 +33,6 @@
     "@josebarrios/job-posting": "^0.2.1",
     "@josebarrios/organization": "^1.1.7",
     "@josebarrios/postal-address": "^0.1.7",
-    "@josebarrios/ui-organization-card": "^0.2.2"
+    "@josebarrios/ui-organization-card": "^0.2.6"
   }
 }
