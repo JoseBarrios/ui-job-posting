@@ -1,5 +1,5 @@
 <!--TESTING-->
-<link rel='import', href='/../node_modules/@josebarrios/ui-organization-card/element/index.html'>
+<!--<link rel='import', href='/../node_modules/@josebarrios/ui-organization-card/element/index.html'>-->
 <!--PRODUCTION-->
 <!--<link rel='import', href='/ui-organization-card/element/index.html'>-->
 
@@ -201,7 +201,7 @@
 
 	</style>
 
-	<img class="image" id="image" src="http://www.himssanalytics.org/sites/himssanalytics/files/homepage-banner_0.jpg" >
+	<img class="image" alt="whatever" id="image" src="http://www.himssanalytics.org/sites/himssanalytics/files/homepage-banner_0.jpg" >
 
 	<ui-organization-card id="hiringOrganization"></ui-organization-card>
 
@@ -257,34 +257,33 @@
 
 				<div class="base-salary-container col-lg-12">
 					<b> Salary </b>
-					<p/>
-						<span id="baseSalary"> [ Base Salary ] </span>
-						<span id="salaryCurrency"> [ Salary Currency ]</span>
-					</div>
-
-					<div class="incentive-compensation-container col-lg-12">
-						<b> Incentive Compensation </b>
-						<p id="incentiveCompensation">[ Incentive Compensation ]</p>
-					</div>
-
-					<div class="footer col-lg-12">
-						<div id="specialCommitmentsContainer" class="special-commitments-container col-lg-12">
-							<i id="specialCommitments">[ Special Commitments ]</i>
-						</div>
-						<button > APPLY </button>
-					</div>
+					<span id="baseSalary"> [ Base Salary ] </span>
+					<span id="salaryCurrency"> [ Salary Currency ]</span>
 				</div>
 
+				<div class="incentive-compensation-container col-lg-12">
+					<b> Incentive Compensation </b>
+					<p id="incentiveCompensation">[ Incentive Compensation ]</p>
+				</div>
+
+				<div class="footer col-lg-12">
+					<div id="specialCommitmentsContainer" class="special-commitments-container col-lg-12">
+						<i id="specialCommitments">[ Special Commitments ]</i>
+					</div>
+					<button > APPLY </button>
+				</div>
 			</div>
 
-			<!--HIDDEN-->
-			<div class="col-lg-12 hidden">
-				<p id="industry">industry</p>
-				<p id="occupationalCategory">occupationalCategory</p>
-				<p id="validThrough">validThrough</p>
-			</div>
+		</div>
+	</div>
 
-		</template>
+	<!--HIDDEN-->
+	<div class="col-lg-12 hidden">
+		<p id="industry">industry</p>
+		<p id="occupationalCategory">occupationalCategory</p>
+		<p id="validThrough">validThrough</p>
+	</div>
+</template>
 
-		<script type="text/javascript" src="ui-job-posting-data-controller.js"> </script>
-		<script type="text/javascript" src="ui-job-posting-view-controller.js"> </script>
+<script type="text/javascript" src="ui-job-posting-data-controller.js"> </script>
+<script type="text/javascript" src="ui-job-posting-view-controller.js"> </script>
