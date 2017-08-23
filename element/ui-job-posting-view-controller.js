@@ -305,7 +305,7 @@ class JobPostingViewController extends HTMLElement{
 			//else if(!this.preview){ this.$datePosted.hidden = true}
 
 			//EDUCATION REQUIREMENTS
-			if(this.$educationRequirements && this.model.educationRequirements.length){
+			if(this.$educationRequirements && this.model.educationRequirements){
 				this.$educationRequirements.innerText = '';
 				this.model.educationRequirements.forEach(requirement => {
 					var p = document.createElement('p');
@@ -321,7 +321,7 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$employmentType && this.model.employmentType){ this.$employmentType.innerText = this.model.employmentType}
 			//else if(!this.preview){ this.$employmentType.hidden = true}
 
-			if(this.$experienceRequirements && this.model.experienceRequirements.length){
+			if(this.$experienceRequirements && this.model.experienceRequirements){
 				this.$experienceRequirements.innerText = '';
 				this.model.experienceRequirements.forEach(requirement => {
 					var p = document.createElement('p');
@@ -341,7 +341,7 @@ class JobPostingViewController extends HTMLElement{
 			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
 			//else if(!this.preview){ this.$hiringOrganization.hidden = true; }
 
-			if(this.$incentiveCompensation && this.model.incentiveCompensation.length){
+			if(this.$incentiveCompensation && this.model.incentiveCompensation){
 				this.$incentiveCompensation.innerText = '';
 				this.model.incentiveCompensation.forEach(requirement => {
 					var p = document.createElement('p');
@@ -358,7 +358,7 @@ class JobPostingViewController extends HTMLElement{
 			//else if(!this.preview){ this.$industry.hidden = true; }
 
 			//JOB BENEFITS
-			if(this.$jobBenefits && this.model.jobBenefits.length){
+			if(this.$jobBenefits && this.model.jobBenefits){
 				this.$jobBenefits.innerText = '';
 				this.model.jobBenefits.forEach(requirement => {
 					var p = document.createElement('p');
@@ -383,7 +383,7 @@ class JobPostingViewController extends HTMLElement{
 			//else if(!this.preview){ this.$occupationalCategory.hidden = true; }
 
 			//QUALIFICATIONS
-			if(this.$qualifications && this.model.qualifications.length){
+			if(this.$qualifications && this.model.qualifications){
 				this.$qualifications.innerText = '';
 				this.model.qualifications.forEach(requirement => {
 					var p = document.createElement('p');
@@ -397,7 +397,7 @@ class JobPostingViewController extends HTMLElement{
 			//else{ this.$qualificationsContainer.hidden = true; }
 
 			//RESPONSABILITIES
-			if(this.$responsibilities && this.model.responsibilities.length){
+			if(this.$responsibilities && this.model.responsibilities){
 				this.$responsibilities.innerText = '';
 				this.model.responsibilities.forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
@@ -415,7 +415,7 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency || 'USD'}
 			//else if(!this.preview){ this.$salaryCurrency.hidden = true; }
 
-			if(this.$skills && this.model.skills.length){
+			if(this.$skills && this.model.skills){
 				this.$skills.innerText = '';
 				this.model.skills.forEach((requirement,index) => {
 					if(requirement && requirement !== ''){

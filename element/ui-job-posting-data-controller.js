@@ -18011,6 +18011,7 @@ class JobPosting extends Intangible {
 
   get jobBenefits(){ return this.computed.jobBenefits; }
 	set jobBenefits(value){
+		if(!value) return;
 		if(!this.computed.jobBenefits){ this.computed.jobBenefits = []; }
     if(Intangible.isArray(value)){ this.computed.jobBenefits = value; }
     else if(Intangible.isString(value)) { this.computed.jobBenefits = [value]; }
