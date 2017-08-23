@@ -42,7 +42,7 @@ class JobPostingViewController extends HTMLElement{
 		this.$qualificationsContainer = this.shadowRoot.querySelector('.qualifications-container');
 		this.$qualifications = this.shadowRoot.querySelector('#qualifications');
 		this.$responsibilities = this.shadowRoot.querySelector('#responsibilities');
-		this.$responsibilitiesContainer = this.shadowRoot.querySelector('.responsibilities-container');
+		//this.$responsibilitiesContainer = this.shadowRoot.querySelector('.responsibilities-container');
 		this.$salaryCurrency = this.shadowRoot.querySelector('#salaryCurrency');
 		this.$skills = this.shadowRoot.querySelector('#skills');
 		this.$skillsContainer = this.shadowRoot.querySelector('.skills-container');
@@ -90,6 +90,14 @@ class JobPostingViewController extends HTMLElement{
 		return value;
 	}
 	set value(value){
+		if(!value.skills){ this.$skills.innerHTML = "• The list of skills required to fulfill this role (e.g., familiarity with Javascript, etc)" }
+		//if(!value.skills){ this.$skills.innerHTML = "• Specific qualifications required for this role (e.g., food save certificate)" }
+		//if(!value.skills){ this.$skills.innerHTML = "• Responsibilities associated with this role (e.g., coordinate yearly HR conference)" }
+		//if(!value.skills){ this.$skills.innerHTML = "• Educational background needed for the position (e.g., Bachelor's degree)." }
+		//if(!value.skills){ this.$skills.innerHTML = "• Description of the experience needed for the position. (e.g., 3 years of experience using Javascript)" }
+		//if(!value.skills){ this.$skills.innerHTML = "• Description of benefits associated with the job (e.g., flexible hours, dental, etc)." }
+		//if(!value.skills){ this.$skills.innerHTML = "• Description of bonus and commission compensation aspects of the job. (e.g., stock options, etc)" }
+
 		this.model = new JobPosting(value);
 		this.model.hiringOrganization = new Organization(value.hiringOrganization);
 		this.model.hiringOrganization.address = new PostalAddress(this.model.hiringOrganization.address);

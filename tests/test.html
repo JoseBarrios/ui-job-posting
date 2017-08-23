@@ -10,7 +10,7 @@
 </body>
 
 <script>
-//const $jobPosting = document.querySelector('ui-job-posting');
+const $jobPosting = document.querySelector('ui-job-posting');
 //$jobPosting.addEventListener('update', function(e){ console.log('FIRED EVENT', e) })
 
 //Check each property
@@ -35,4 +35,14 @@
 //$jobPosting.value = { "type" : "JobPosting" , "title" : "UPDATED" };
 //$jobPosting.value = { "type" : "JobPosting" , "title" : "UPDATED", "hiringOrganization" : { "name" : "UPDATED" } };
 //$jobPosting.value = { "type" : "JobPosting" , "title" : "JOB TITLE", "hiringOrganization" : { "name" : "UPDATED", "disambiguatingDescription" : "UPDATED", "description":"UPDATED","address" : { "addressLocality" : "UPDATED", "addressRegion":"UPDATED"} } }
+
+//$jobPosting.setAttribute('value', JSON.stringify({ "type" : "JobPosting" , "title" : "JOB TITLE", "hiringOrganization" : { "name" : "UPDATED", "disambiguatingDescription" : "UPDATED", "description":"UPDATED","address" : { "addressLocality" : "UPDATED", "addressRegion":"UPDATED"} } });
+//$jobPosting.value = { "type" : "JobPosting" , "title" : "UPDATED" };
+
+setInterval(function(){
+	//console.log('HELLO')
+	$jobPosting.setAttribute('value', JSON.stringify({ "type" : "JobPosting" , "title" : "JOB TITLE", "description":"UPDATED" }));
+	//$jobPosting.setAttribute('value', JSON.stringify(new JobPosting({})));
+}, 1000);
+
 </script>
