@@ -87,7 +87,7 @@ module.exports = Intangible;
 "use strict";
 
 
-const lodash = __webpack_require__(4);
+const lodash = __webpack_require__(6);
 const EMPTY = '';
 const TYPE = 'Thing';
 let muteErrors = false;
@@ -384,134 +384,230 @@ module.exports = Thing;
 /***/ (function(module, exports, __webpack_require__) {
 
 //WEBPACK: Makes it browser friendly
-window.JobPosting = __webpack_require__(3)
-window.PostalAddress = __webpack_require__(7)
-window.Organization = __webpack_require__(10)
+window.PostalAddress = __webpack_require__(3);
+window.Organization = __webpack_require__(9);
+window.JobPosting = __webpack_require__(10);
 
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const Intangible = __webpack_require__(0)
+"use strict";
 
-class JobPosting extends Intangible {
+
+const ContactPoint = __webpack_require__(4);
+
+const EMPTY = '';
+const TYPE = 'PostalAddress'
+
+class PostalAddress extends ContactPoint {
+
+  static get type(){ return TYPE; }
 
   constructor(model){
     model = model || {};
-    super(model)
-    this.baseSalary = model.baseSalary;
-    this.datePosted = model.datePosted;
-    this.educationRequirements = model.educationRequirements;
-    this.employmentType = model.employmentType;
-    this.experienceRequirements = model.experienceRequirements;
-    this.hiringOrganization = model.hiringOrganization;
-    this.incentiveCompensation = model.incentiveCompensation;
-    this.industry = model.industry;
-    this.jobBenefits = model.jobBenefits;
-    this.jobLocation = model.jobLocation;
-    this.occupationalCategory = model.occupationalCategory;
-    this.qualifications = model.qualifications;
-    this.responsibilities = model.responsibilities;
-    this.salaryCurrency = model.salaryCurrency;
-    this.skills = model.skills;
-    this.specialCommitments = model.specialCommitments;
-    this.title = model.title;
-    this.validThrough = model.validThrough;
-    this.workHours = model.workHours;
+    super(model);
+
+    this.addressCountry = model.addressCountry;
+    this.addressLocality = model.addressLocality;
+    this.addressRegion = model.addressRegion;
+    this.postOfficeBoxNumber = model.postOfficeBoxNumber;
+    this.postalCode = model.postalCode;
+    this.streetAddress = model.streetAddress;
   }
 
-  get baseSalary(){ return this.computed.baseSalary; }
-  set baseSalary(value){ this.computed.baseSalary = value; }
+  get type(){ return TYPE; }
+  set type(value) {}
 
-  get datePosted(){ return this.computed.datePosted; }
-  set datePosted(value){ this.computed.datePosted = value; }
-
-  get educationRequirements(){ return this.computed.educationRequirements; }
-  set educationRequirements(value){
-    if(!this.computed.educationRequirements){ this.computed.educationRequirements = []; }
-    if(Intangible.isArray(value)){ this.computed.educationRequirements = value; }
-    else if(Intangible.isString(value)){ this.computed.educationRequirements = [value]; }
+  get addressCountry(){ return this.computed.addressCountry; }
+  set addressCountry(value){
+    if(ContactPoint.isEmpty(value)){ this.computed.addressCountry = EMPTY}
+    else if(ContactPoint.isString(value)){ this.computed.addressCountry = value }
+    else if(ContactPoint.isObject(value)){ this.computed.addressCountry = value }
+    else { ContactPoint.logError(this.constructor.name+': addressCountry must be a string, or object', 'type') }
+  }
+  get addressLocality(){ return this.computed.addressLocality; }
+  set addressLocality(value){
+    if(ContactPoint.isEmpty(value)){ this.computed.addressLocality = EMPTY}
+    else if(ContactPoint.isString(value)){ this.computed.addressLocality = value }
+    else { ContactPoint.logError(this.constructor.name+': addressLocality must be a string', 'type') }
+  }
+  get addressRegion(){ return this.computed.addressRegion; }
+  set addressRegion(value){
+    if(ContactPoint.isEmpty(value)){ this.computed.addressRegion = EMPTY}
+    else if(ContactPoint.isString(value)){ this.computed.addressRegion = value }
+    else { ContactPoint.logError(this.constructor.name+': addressRegion must be a string', 'type') }
+  }
+  get postOfficeBoxNumber(){ return this.computed.postOfficeBoxNumber; }
+  set postOfficeBoxNumber(value){
+    if(ContactPoint.isEmpty(value)){ this.computed.postOfficeBoxNumber = EMPTY}
+    else if(ContactPoint.isString(value)){ this.computed.postOfficeBoxNumber = value }
+    else { ContactPoint.logError(this.constructor.name+': postPOfficeBoxNumber must be a string', 'type') }
+  }
+  get postalCode(){ return this.computed.postalCode; }
+  set postalCode(value){
+    if(ContactPoint.isEmpty(value)){ this.computed.postalCode = EMPTY}
+    else if(ContactPoint.isString(value)){ this.computed.postalCode = value }
+    else { ContactPoint.logError(this.constructor.name+': postalCode must be a string', 'type') }
+  }
+  get streetAddress(){ return this.computed.streetAddress; }
+  set streetAddress(value){
+    if(ContactPoint.isEmpty(value)){ this.computed.streetAddress = EMPTY}
+    else if(ContactPoint.isString(value)){ this.computed.streetAddress = value }
+    else { ContactPoint.logError(this.constructor.name+': streetAddresstreetAddress must be a string', 'type') }
   }
 
-  get employmentType(){ return this.computed.employmentType; }
-  set employmentType(value){ this.computed.employmentType = value; }
 
-  get experienceRequirements(){ return this.computed.experienceRequirements; }
-  set experienceRequirements(value){
-    if(Intangible.isArray(value)){ this.computed.experienceRequirements = value; }
-    else if(Intangible.isString(value)) { this.computed.experienceRequirements = [value]; }
-    else if(!this.computed.experienceRequirements){ this.computed.experienceRequirements = []; }
+  formatted(type='canada'){
+    type = type.toUpperCase();
+    var format = '';
+    switch(type){
+      case 'CANADA':
+        format = `${this.streetAddress}.
+        ${this.addressLocality}, ${this.addressRegion} ${this.postalCode}
+        ${this.addressCountry}`
+        break;
+      default:
+        console.error('NO FORMAT FOUND');
+    }
+    return format;
   }
-
-  get hiringOrganization(){ return this.computed.hiringOrganization; }
-  set hiringOrganization(value){ this.computed.hiringOrganization = value; }
-
-  get incentiveCompensation(){ return this.computed.incentiveCompensation; }
-	set incentiveCompensation(value){
-		if(!this.computed.incentiveCompensation){ this.computed.incentiveCompensation = []; }
-    if(Intangible.isArray(value)){ this.computed.incentiveCompensation = value; }
-    else if(Intangible.isString(value)) { this.computed.incentiveCompensation = [value]; }
-	}
-
-  get industry(){ return this.computed.industry; }
-  set industry(value){ this.computed.industry = value; }
-
-  get jobBenefits(){ return this.computed.jobBenefits; }
-	set jobBenefits(value){
-		if(!this.computed.jobBenefits){ this.computed.jobBenefits = []; }
-    if(Intangible.isArray(value)){ this.computed.jobBenefits = value; }
-    else if(Intangible.isString(value)) { this.computed.jobBenefits = [value]; }
-	}
-
-  get jobLocation(){ return this.computed.jobLocation; }
-  set jobLocation(value){ this.computed.jobLocation = value; }
-
-  get occupationalCategory(){ return this.computed.occupationalCategory; }
-  set occupationalCategory(value){ this.computed.occupationalCategory = value; }
-
-  get qualifications(){ return this.computed.qualifications; }
-  set qualifications(value){
-    if(!this.computed.qualifications){ this.computed.qualifications = []; }
-    if(Intangible.isArray(value)){ this.computed.qualifications = value; }
-    else if(Intangible.isString(value)) { this.computed.qualifications = [value]; }
-  }
-
-  get responsibilities(){ return this.computed.responsibilities; }
-  set responsibilities(value){
-    if(!this.computed.responsibilities){ this.computed.responsibilities = []; }
-    if(Intangible.isArray(value)){ this.computed.responsibilities = value; }
-    else if(Intangible.isString(value)) { this.computed.responsibilities = [value]; }
-  }
-
-  get salaryCurrency(){ return this.computed.salaryCurrency; }
-  set salaryCurrency(value){ this.computed.salaryCurrency = value; }
-
-  get skills(){ return this.computed.skills; }
-	set skills(value){
-		if(!this.computed.skills){ this.computed.skills = []; }
-    if(Intangible.isArray(value)){ this.computed.skills = value; }
-    else if(Intangible.isString(value)) { this.computed.skills = [value]; }
-	}
-
-  get specialCommitments(){ return this.computed.specialCommitments; }
-  set specialCommitments(value){ this.computed.specialCommitments = value; }
-
-  get title(){ return this.computed.title; }
-  set title(value){ this.computed.title = value; }
-
-  get validThrough(){ return this.computed.validThrough; }
-  set validThrough(value){ this.computed.validThrough = value; }
-
-  get workHours(){ return this.computed.workHours; }
-  set workHours(value){ this.computed.workHours = value; }
 }
 
-module.exports = JobPosting;
+module.exports = PostalAddress;
 
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const StructuredValue = __webpack_require__(5);
+const EMPTY = '';
+
+class ContactPoint extends StructuredValue {
+
+  constructor(model){
+    model = model || {};
+    super(model);
+
+    this.areaServed = model.areaServed;
+    this.availableLanguage = model.availableLanguage;
+    this.contactOption = model.contactOption;
+    this.contactType = model.contactType;
+    this.email = model.email;
+    this.faxNumber = model.faxNumber;
+    this.hoursAvailable = model.hoursAvailable;
+    this.productSupported = model.productSupported;
+    this.telephone= model.telephone;
+
+  }
+
+  get areaServed(){ return this.computed.areaServed; }
+  set areaServed(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.areaServed = EMPTY}
+    else if(StructuredValue.isString(value)){ this.computed.areaServed = value }
+    else if(StructuredValue.isObject(value)){ this.computed.areaServed = value }
+    else if(StructuredValue.isArray(value)){ this.computed.areaServed = value }
+    else { StructuredValue.logError(this.constructor.name+': areaServed must be a string, object, or array', 'type') }
+  }
+
+  get availableLanguage(){ return this.computed.availableLanguage; }
+  set availableLanguage(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.availableLanguage = EMPTY}
+    else if(StructuredValue.isString(value)){ this.computed.availableLanguage = value }
+    else if(StructuredValue.isObject(value)){ this.computed.availableLanguage = value }
+    else if(StructuredValue.isArray(value)){ this.computed.availableLanguage = value }
+    else { StructuredValue.logError(this.constructor.name+': availableLanguage must be a string, object, or array', 'type') }
+  }
+
+  get contactOption(){ return this.computed.contactOption; }
+  set contactOption(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.contactOption = EMPTY}
+    else if(StructuredValue.isString(value)){ this.computed.contactOption = value }
+    else if(StructuredValue.isObject(value)){ this.computed.contactOption = value }
+    else if(StructuredValue.isArray(value)){ this.computed.contactOption = value }
+    else { StructuredValue.logError(this.constructor.name+': contactOption must be a string, object, or array', 'type') }
+  }
+
+  get contactType(){ return this.computed.contactType; }
+  set contactType(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.contactType = EMPTY}
+    else if(StructuredValue.isString(value)){ this.computed.contactType = value }
+    else if(StructuredValue.isObject(value)){ this.computed.contactType = value }
+    else { StructuredValue.logError(this.constructor.name+': contactType must be a string, or object', 'type') }
+  }
+
+  get email(){ return this.computed.email; }
+  set email(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.email = EMPTY}
+    else if(StructuredValue.isString(value)){
+      let email = this.lodash.toLower(value);
+      email = this.lodash.trim(email);
+      this.computed.email = email;
+    } else { StructuredValue.logError(this.constructor.name+': email must be a string, object, or array', 'type') }
+  }
+
+  get faxNumber(){ return this.computed.faxNumber; }
+  set faxNumber(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.faxNumber = EMPTY}
+    else if(StructuredValue.isNumber(value)){ this.computed.faxNumber = value }
+    else { StructuredValue.logError(this.constructor.name+': faxNumber must be a number', 'type') }
+  }
+
+  get hoursAvailable(){ return this.computed.hoursAvailable; }
+  set hoursAvailable(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.hoursAvailable = EMPTY}
+    else if(StructuredValue.isString(value)){ this.computed.hoursAvailable = value }
+    else if(StructuredValue.isObject(value)){ this.computed.hoursAvailable = value }
+    else if(StructuredValue.isArray(value)){ this.computed.hoursAvailable = value }
+    else { StructuredValue.logError(this.constructor.name+': hoursAvailable must be a string, object, or array', 'type') }
+  }
+
+  get productSupported(){ return this.computed.productSupported; }
+  set productSupported(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.productSupported = EMPTY}
+    else if(StructuredValue.isString(value)){ this.computed.productSupported = value }
+    else if(StructuredValue.isObject(value)){ this.computed.productSupported = value }
+    else if(StructuredValue.isArray(value)){ this.computed.productSupported = value }
+    else { StructuredValue.logError(this.constructor.name+': productSupported must be a string, object, or array', 'type') }
+  }
+
+  get telephone(){ return this.computed.telephone; }
+  set telephone(value){
+    if(StructuredValue.isEmpty(value)){ this.computed.telephone = EMPTY}
+    else if(StructuredValue.isString(value)){ this.computed.telephone = value }
+    else if(StructuredValue.isNumber(value)){ this.computed.telephone = value }
+    else if(StructuredValue.isObject(value)){ this.computed.telephone = value }
+    else if(StructuredValue.isArray(value)){ this.computed.telephone = value }
+    else { StructuredValue.logError(this.constructor.name+': telephone must be a string, object, number or array', 'type') }
+  }
+}
+
+module.exports = ContactPoint;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const Intangible = __webpack_require__(0);
+
+class StructuredValue extends Intangible{
+    constructor(model){
+      model = model || {};
+      super(model)
+    }
+}
+
+module.exports = StructuredValue;
+
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17600,10 +17696,10 @@ module.exports = JobPosting;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(8)(module)))
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports) {
 
 var g;
@@ -17630,7 +17726,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17658,224 +17754,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-const ContactPoint = __webpack_require__(8);
-
-const EMPTY = '';
-const TYPE = 'PostalAddress'
-
-class PostalAddress extends ContactPoint {
-
-  static get type(){ return TYPE; }
-
-  constructor(model){
-    model = model || {};
-    super(model);
-
-    this.addressCountry = model.addressCountry;
-    this.addressLocality = model.addressLocality;
-    this.addressRegion = model.addressRegion;
-    this.postOfficeBoxNumber = model.postOfficeBoxNumber;
-    this.postalCode = model.postalCode;
-    this.streetAddress = model.streetAddress;
-  }
-
-  get type(){ return TYPE; }
-  set type(value) {}
-
-  get addressCountry(){ return this.computed.addressCountry; }
-  set addressCountry(value){
-    if(ContactPoint.isEmpty(value)){ this.computed.addressCountry = EMPTY}
-    else if(ContactPoint.isString(value)){ this.computed.addressCountry = value }
-    else if(ContactPoint.isObject(value)){ this.computed.addressCountry = value }
-    else { ContactPoint.logError(this.constructor.name+': addressCountry must be a string, or object', 'type') }
-  }
-  get addressLocality(){ return this.computed.addressLocality; }
-  set addressLocality(value){
-    if(ContactPoint.isEmpty(value)){ this.computed.addressLocality = EMPTY}
-    else if(ContactPoint.isString(value)){ this.computed.addressLocality = value }
-    else { ContactPoint.logError(this.constructor.name+': addressLocality must be a string', 'type') }
-  }
-  get addressRegion(){ return this.computed.addressRegion; }
-  set addressRegion(value){
-    if(ContactPoint.isEmpty(value)){ this.computed.addressRegion = EMPTY}
-    else if(ContactPoint.isString(value)){ this.computed.addressRegion = value }
-    else { ContactPoint.logError(this.constructor.name+': addressRegion must be a string', 'type') }
-  }
-  get postOfficeBoxNumber(){ return this.computed.postOfficeBoxNumber; }
-  set postOfficeBoxNumber(value){
-    if(ContactPoint.isEmpty(value)){ this.computed.postOfficeBoxNumber = EMPTY}
-    else if(ContactPoint.isString(value)){ this.computed.postOfficeBoxNumber = value }
-    else { ContactPoint.logError(this.constructor.name+': postPOfficeBoxNumber must be a string', 'type') }
-  }
-  get postalCode(){ return this.computed.postalCode; }
-  set postalCode(value){
-    if(ContactPoint.isEmpty(value)){ this.computed.postalCode = EMPTY}
-    else if(ContactPoint.isString(value)){ this.computed.postalCode = value }
-    else { ContactPoint.logError(this.constructor.name+': postalCode must be a string', 'type') }
-  }
-  get streetAddress(){ return this.computed.streetAddress; }
-  set streetAddress(value){
-    if(ContactPoint.isEmpty(value)){ this.computed.streetAddress = EMPTY}
-    else if(ContactPoint.isString(value)){ this.computed.streetAddress = value }
-    else { ContactPoint.logError(this.constructor.name+': streetAddresstreetAddress must be a string', 'type') }
-  }
-
-
-  formatted(type='canada'){
-    type = type.toUpperCase();
-    var format = '';
-    switch(type){
-      case 'CANADA':
-        format = `${this.streetAddress}.
-        ${this.addressLocality}, ${this.addressRegion} ${this.postalCode}
-        ${this.addressCountry}`
-        break;
-      default:
-        console.error('NO FORMAT FOUND');
-    }
-    return format;
-  }
-}
-
-module.exports = PostalAddress;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-const StructuredValue = __webpack_require__(9);
-const EMPTY = '';
-
-class ContactPoint extends StructuredValue {
-
-  constructor(model){
-    model = model || {};
-    super(model);
-
-    this.areaServed = model.areaServed;
-    this.availableLanguage = model.availableLanguage;
-    this.contactOption = model.contactOption;
-    this.contactType = model.contactType;
-    this.email = model.email;
-    this.faxNumber = model.faxNumber;
-    this.hoursAvailable = model.hoursAvailable;
-    this.productSupported = model.productSupported;
-    this.telephone= model.telephone;
-
-  }
-
-  get areaServed(){ return this.computed.areaServed; }
-  set areaServed(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.areaServed = EMPTY}
-    else if(StructuredValue.isString(value)){ this.computed.areaServed = value }
-    else if(StructuredValue.isObject(value)){ this.computed.areaServed = value }
-    else if(StructuredValue.isArray(value)){ this.computed.areaServed = value }
-    else { StructuredValue.logError(this.constructor.name+': areaServed must be a string, object, or array', 'type') }
-  }
-
-  get availableLanguage(){ return this.computed.availableLanguage; }
-  set availableLanguage(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.availableLanguage = EMPTY}
-    else if(StructuredValue.isString(value)){ this.computed.availableLanguage = value }
-    else if(StructuredValue.isObject(value)){ this.computed.availableLanguage = value }
-    else if(StructuredValue.isArray(value)){ this.computed.availableLanguage = value }
-    else { StructuredValue.logError(this.constructor.name+': availableLanguage must be a string, object, or array', 'type') }
-  }
-
-  get contactOption(){ return this.computed.contactOption; }
-  set contactOption(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.contactOption = EMPTY}
-    else if(StructuredValue.isString(value)){ this.computed.contactOption = value }
-    else if(StructuredValue.isObject(value)){ this.computed.contactOption = value }
-    else if(StructuredValue.isArray(value)){ this.computed.contactOption = value }
-    else { StructuredValue.logError(this.constructor.name+': contactOption must be a string, object, or array', 'type') }
-  }
-
-  get contactType(){ return this.computed.contactType; }
-  set contactType(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.contactType = EMPTY}
-    else if(StructuredValue.isString(value)){ this.computed.contactType = value }
-    else if(StructuredValue.isObject(value)){ this.computed.contactType = value }
-    else { StructuredValue.logError(this.constructor.name+': contactType must be a string, or object', 'type') }
-  }
-
-  get email(){ return this.computed.email; }
-  set email(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.email = EMPTY}
-    else if(StructuredValue.isString(value)){
-      let email = this.lodash.toLower(value);
-      email = this.lodash.trim(email);
-      this.computed.email = email;
-    } else { StructuredValue.logError(this.constructor.name+': email must be a string, object, or array', 'type') }
-  }
-
-  get faxNumber(){ return this.computed.faxNumber; }
-  set faxNumber(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.faxNumber = EMPTY}
-    else if(StructuredValue.isNumber(value)){ this.computed.faxNumber = value }
-    else { StructuredValue.logError(this.constructor.name+': faxNumber must be a number', 'type') }
-  }
-
-  get hoursAvailable(){ return this.computed.hoursAvailable; }
-  set hoursAvailable(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.hoursAvailable = EMPTY}
-    else if(StructuredValue.isString(value)){ this.computed.hoursAvailable = value }
-    else if(StructuredValue.isObject(value)){ this.computed.hoursAvailable = value }
-    else if(StructuredValue.isArray(value)){ this.computed.hoursAvailable = value }
-    else { StructuredValue.logError(this.constructor.name+': hoursAvailable must be a string, object, or array', 'type') }
-  }
-
-  get productSupported(){ return this.computed.productSupported; }
-  set productSupported(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.productSupported = EMPTY}
-    else if(StructuredValue.isString(value)){ this.computed.productSupported = value }
-    else if(StructuredValue.isObject(value)){ this.computed.productSupported = value }
-    else if(StructuredValue.isArray(value)){ this.computed.productSupported = value }
-    else { StructuredValue.logError(this.constructor.name+': productSupported must be a string, object, or array', 'type') }
-  }
-
-  get telephone(){ return this.computed.telephone; }
-  set telephone(value){
-    if(StructuredValue.isEmpty(value)){ this.computed.telephone = EMPTY}
-    else if(StructuredValue.isString(value)){ this.computed.telephone = value }
-    else if(StructuredValue.isNumber(value)){ this.computed.telephone = value }
-    else if(StructuredValue.isObject(value)){ this.computed.telephone = value }
-    else if(StructuredValue.isArray(value)){ this.computed.telephone = value }
-    else { StructuredValue.logError(this.constructor.name+': telephone must be a string, object, number or array', 'type') }
-  }
-}
-
-module.exports = ContactPoint;
-
-
-/***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Intangible = __webpack_require__(0);
-
-class StructuredValue extends Intangible{
-    constructor(model){
-      model = model || {};
-      super(model)
-    }
-}
-
-module.exports = StructuredValue;
-
-
-/***/ }),
-/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const Thing = __webpack_require__(1);
@@ -18057,6 +17936,133 @@ class Organization extends Thing {
 }
 
 module.exports = Organization;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const Intangible = __webpack_require__(0)
+
+class JobPosting extends Intangible {
+
+  constructor(model){
+    model = model || {};
+    super(model)
+    this.baseSalary = model.baseSalary;
+    this.datePosted = model.datePosted;
+    this.educationRequirements = model.educationRequirements;
+    this.employmentType = model.employmentType;
+    this.experienceRequirements = model.experienceRequirements;
+    this.hiringOrganization = model.hiringOrganization;
+    this.incentiveCompensation = model.incentiveCompensation;
+    this.industry = model.industry;
+    this.jobBenefits = model.jobBenefits;
+    this.jobLocation = model.jobLocation;
+    this.occupationalCategory = model.occupationalCategory;
+    this.qualifications = model.qualifications;
+    this.responsibilities = model.responsibilities;
+    this.salaryCurrency = model.salaryCurrency;
+    this.skills = model.skills;
+    this.specialCommitments = model.specialCommitments;
+    this.title = model.title;
+    this.validThrough = model.validThrough;
+    this.workHours = model.workHours;
+  }
+
+  get baseSalary(){ return this.computed.baseSalary; }
+  set baseSalary(value){ this.computed.baseSalary = value; }
+
+  get datePosted(){ return this.computed.datePosted; }
+  set datePosted(value){ this.computed.datePosted = value; }
+
+  get educationRequirements(){ return this.computed.educationRequirements; }
+  set educationRequirements(value){
+		if(!value) return;
+    if(!this.computed.educationRequirements){ this.computed.educationRequirements = []; }
+    if(Intangible.isArray(value)){ this.computed.educationRequirements = value; }
+    else if(Intangible.isString(value)){ this.computed.educationRequirements = [value]; }
+  }
+
+  get employmentType(){ return this.computed.employmentType; }
+  set employmentType(value){ this.computed.employmentType = value; }
+
+  get experienceRequirements(){ return this.computed.experienceRequirements; }
+  set experienceRequirements(value){
+		if(!value) return;
+    if(Intangible.isArray(value)){ this.computed.experienceRequirements = value; }
+    else if(Intangible.isString(value)) { this.computed.experienceRequirements = [value]; }
+    else if(!this.computed.experienceRequirements){ this.computed.experienceRequirements = []; }
+  }
+
+  get hiringOrganization(){ return this.computed.hiringOrganization; }
+  set hiringOrganization(value){ this.computed.hiringOrganization = value; }
+
+  get incentiveCompensation(){ return this.computed.incentiveCompensation; }
+	set incentiveCompensation(value){
+		if(!value) return;
+		if(!this.computed.incentiveCompensation){ this.computed.incentiveCompensation = []; }
+    if(Intangible.isArray(value)){ this.computed.incentiveCompensation = value; }
+    else if(Intangible.isString(value)) { this.computed.incentiveCompensation = [value]; }
+	}
+
+  get industry(){ return this.computed.industry; }
+  set industry(value){ this.computed.industry = value; }
+
+  get jobBenefits(){ return this.computed.jobBenefits; }
+	set jobBenefits(value){
+		if(!this.computed.jobBenefits){ this.computed.jobBenefits = []; }
+    if(Intangible.isArray(value)){ this.computed.jobBenefits = value; }
+    else if(Intangible.isString(value)) { this.computed.jobBenefits = [value]; }
+	}
+
+  get jobLocation(){ return this.computed.jobLocation; }
+  set jobLocation(value){ this.computed.jobLocation = value; }
+
+  get occupationalCategory(){ return this.computed.occupationalCategory; }
+  set occupationalCategory(value){ this.computed.occupationalCategory = value; }
+
+  get qualifications(){ return this.computed.qualifications; }
+  set qualifications(value){
+		if(!value) return;
+    if(!this.computed.qualifications){ this.computed.qualifications = []; }
+    if(Intangible.isArray(value)){ this.computed.qualifications = value; }
+    else if(Intangible.isString(value)) { this.computed.qualifications = [value]; }
+  }
+
+  get responsibilities(){ return this.computed.responsibilities; }
+  set responsibilities(value){
+		if(!value) return;
+    if(!this.computed.responsibilities){ this.computed.responsibilities = []; }
+    if(Intangible.isArray(value)){ this.computed.responsibilities = value; }
+    else if(Intangible.isString(value)) { this.computed.responsibilities = [value]; }
+  }
+
+  get salaryCurrency(){ return this.computed.salaryCurrency; }
+  set salaryCurrency(value){ this.computed.salaryCurrency = value; }
+
+  get skills(){ return this.computed.skills; }
+	set skills(value){
+		if(!value) return;
+		if(!this.computed.skills){ this.computed.skills = []; }
+    if(Intangible.isArray(value)){ this.computed.skills = value; }
+    else if(Intangible.isString(value)) { this.computed.skills = [value]; }
+	}
+
+  get specialCommitments(){ return this.computed.specialCommitments; }
+  set specialCommitments(value){ this.computed.specialCommitments = value; }
+
+  get title(){ return this.computed.title; }
+  set title(value){ this.computed.title = value; }
+
+  get validThrough(){ return this.computed.validThrough; }
+  set validThrough(value){ this.computed.validThrough = value; }
+
+  get workHours(){ return this.computed.workHours; }
+  set workHours(value){ this.computed.workHours = value; }
+}
+
+module.exports = JobPosting;
 
 
 /***/ })
