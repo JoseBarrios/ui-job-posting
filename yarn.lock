@@ -15,8 +15,8 @@
     "@josebarrios/thing" "^0.3.19"
 
 "@josebarrios/job-posting@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.1.tgz#5d6a7f5200a9b509c055b1ebeaa8e15df67fdbe1"
+  version "0.2.2"
+  resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.2.tgz#21c1a7543eaf77e8982ebfea998f551a637831e8"
   dependencies:
     "@josebarrios/intangible" "^0.1.2"
 
