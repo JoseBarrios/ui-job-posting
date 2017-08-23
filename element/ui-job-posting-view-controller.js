@@ -90,7 +90,8 @@ class JobPostingViewController extends HTMLElement{
 		return value;
 	}
 	set value(value){
-		if(!value.skills){ this.$skills.innerHTML = "• The list of skills required to fulfill this role (e.g., familiarity with Javascript, etc)" }
+		console.log(value)
+		if(value.skills === [""]){ this.$skills.innerHTML = "• The list of skills required to fulfill this role (e.g., familiarity with Javascript, etc)" }
 		//if(!value.skills){ this.$skills.innerHTML = "• Specific qualifications required for this role (e.g., food save certificate)" }
 		//if(!value.skills){ this.$skills.innerHTML = "• Responsibilities associated with this role (e.g., coordinate yearly HR conference)" }
 		//if(!value.skills){ this.$skills.innerHTML = "• Educational background needed for the position (e.g., Bachelor's degree)." }
