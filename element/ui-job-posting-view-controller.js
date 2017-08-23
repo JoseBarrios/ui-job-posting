@@ -77,7 +77,6 @@ class JobPostingViewController extends HTMLElement{
 	set shadowRoot(value){ this._shadowRoot = value}
 
 
-
 	//MASTER
 	get value(){
 		let value = {}
@@ -103,6 +102,8 @@ class JobPostingViewController extends HTMLElement{
 	get baseSalary(){return this.model.baseSalary;}
 	set baseSalary(value){
 		this.model.baseSalary = value
+		this.$baseSalary.hidden = false;
+		this.$salaryCurrency.hidden = false;
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
@@ -340,7 +341,7 @@ class JobPostingViewController extends HTMLElement{
 			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
 			//else if(!this.preview){ this.$hiringOrganization.hidden = true; }
 
-			if(this.$incentiveCompensation && this.model.incentiveCompensation){
+			if(this.$incentiveCompensation && this.model.incentiveCompensation.length){
 				this.$incentiveCompensation.innerText = '';
 				this.model.incentiveCompensation.forEach(requirement => {
 					var p = document.createElement('p');
@@ -357,7 +358,7 @@ class JobPostingViewController extends HTMLElement{
 			//else if(!this.preview){ this.$industry.hidden = true; }
 
 			//JOB BENEFITS
-			if(this.$jobBenefits && this.model.jobBenefits){
+			if(this.$jobBenefits && this.model.jobBenefits.length){
 				this.$jobBenefits.innerText = '';
 				this.model.jobBenefits.forEach(requirement => {
 					var p = document.createElement('p');
@@ -414,7 +415,7 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency || 'USD'}
 			//else if(!this.preview){ this.$salaryCurrency.hidden = true; }
 
-			if(this.$skills && this.model.skills){
+			if(this.$skills && this.model.skills.length){
 				this.$skills.innerText = '';
 				this.model.skills.forEach((requirement,index) => {
 					if(requirement && requirement !== ''){

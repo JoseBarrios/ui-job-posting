@@ -7,8 +7,8 @@
 
 	<style>
 
-		.work-hours::after { content: " )" }
-		.work-hours::before { content: "( " }
+		//.work-hours::after { content: " )" }
+		//.work-hours::before { content: "( " }
 
 		.image {
 			background-color:white;
@@ -76,6 +76,7 @@
 			padding-bottom:0px;
 			font-size:1.1em;
 		}
+
 		p, span, i {
 			font-size:1.1em;
 			color:#8691a9;
@@ -105,11 +106,9 @@
 			border-top: 1px solid #e8ebf2;
 		}
 
-
 		.hidden {
 			display:none;
 		}
-
 
 		* {
 			box-sizing: border-box;
@@ -170,7 +169,6 @@
 				text-align:right;
 			}
 
-
 		}
 
 		@media only screen and (min-width: 768px) {
@@ -194,9 +192,8 @@
 
 		}
 
-
 		.employment-type {
-			text-transform: capitalize;
+			//text-transform: capitalize;
 		}
 
 	</style>
@@ -210,65 +207,62 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 card">
 
-				<p class="date-posted" id="datePosted">[Date Posted]</p>
+				<p class="date-posted" id="datePosted">Posted 2 min ago</p>
 				<div class="header col-lg-12">
-					<b class="title" id="title"> [ Job Title ] </b>
+					<b class="title" id="title">Job Title</b>
 					<br>
-					<span id="jobLocation">[ Job Location ]</span>
+					<span id="jobLocation">Job Location</span>
 					<br>
-					<span class="employment-type" id="employmentType">[ Employment Type ]</span>
-					<span class="work-hours" id="workHours">[ Work Hours ]</span>
+					<span class="employment-type" id="employmentType">Job type (full-time, etc)</span>
+					<span class="work-hours" id="workHours"></span>
+					<br>
+					<span id="baseSalary" hidden> $75,000 </span>
+					<span id="salaryCurrency" hidden>USD</span>
 				</div>
 
 				<div class="description-container col-lg-12">
 					<b> Job Description </b>
-					<p id="description">[ Description ]</p>
+					<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 
 				<div class="skills-container col-lg-12">
 					<b> Skills </b>
-					<p id="skills">[ Skills ]</p>
+					<p id="skills">• The list of skills required to fulfill this role (e.g., familiarity with Javascript, etc)</p>
 				</div>
 
 				<div class="qualifications-container col-lg-12">
 					<b> Qualifications </b>
-					<p id="qualifications">[ Qualifications ]</p>
+					<p id="qualifications">• Specific qualifications required for this role (e.g., food save certificate).</p>
 				</div>
 
 				<div class="responsibilities-container col-lg-12">
 					<b> Responsibilities </b>
-					<p id="responsibilities">[ Responsibilities ]</p>
+					<p id="responsibilities">• Responsibilities associated with this role (e.g., coordinate yearly HR conference).</p>
 				</div>
 
 				<div class="education-requirements-container col-lg-12">
 					<b> Education </b>
-					<p id="educationRequirements">[ Education Requirements ]</p>
+					<p id="educationRequirements">• Educational background needed for the position (e.g., Bachelor's degree).</p>
 				</div>
 
 				<div class="experience-requirements-container col-lg-12">
 					<b> Experience </b>
-					<p id="experienceRequirements">[ Experience Requirements ]</p>
+					<p id="experienceRequirements">• Description of the experience needed for the position. (e.g., 3 years of experience using Javascript)</p>
 				</div>
 
 				<div class="job-benefits-container col-lg-12">
 					<b> Job Benefits </b>
-					<p id="jobBenefits">[ Job Benefits ]</p>
-				</div>
-
-				<div class="base-salary-container col-lg-12">
-					<b> Salary </b>
-					<span id="baseSalary"> [ Base Salary ] </span>
-					<span id="salaryCurrency"> [ Salary Currency ]</span>
+					<p id="jobBenefits">• Description of benefits associated with the job (e.g., flexible hours, dental, etc).</p>
 				</div>
 
 				<div class="incentive-compensation-container col-lg-12">
 					<b> Incentive Compensation </b>
-					<p id="incentiveCompensation">[ Incentive Compensation ]</p>
+					<p id="incentiveCompensation">• Description of bonus and commission compensation aspects of the job. (e.g., stock options, etc)</p>
 				</div>
 
 				<div class="footer col-lg-12">
 					<div id="specialCommitmentsContainer" class="special-commitments-container col-lg-12">
-						<i id="specialCommitments">[ Special Commitments ]</i>
+						<i id="specialCommitments">Any special commitments associated with this job posting. Valid entries include Veteran, Military spouse, affirmative action commitments, etc</i>
 					</div>
 					<button > APPLY </button>
 				</div>
@@ -278,7 +272,7 @@
 	</div>
 
 	<!--HIDDEN-->
-	<div class="col-lg-12 hidden">
+	<div class="col-lg-12 hidden" hidden>
 		<p id="industry">industry</p>
 		<p id="occupationalCategory">occupationalCategory</p>
 		<p id="validThrough">validThrough</p>
