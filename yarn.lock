@@ -15,8 +15,8 @@
     "@josebarrios/thing" "^0.3.19"
 
 "@josebarrios/job-posting@^0.2.1":
-  version "0.2.3"
-  resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.3.tgz#1bd53411c69265881cf4ffa2c1f54ebeab654f5e"
+  version "0.2.5"
+  resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.5.tgz#b8684668b4b0c3736893f033ef5e8bccb2af466a"
   dependencies:
     "@josebarrios/intangible" "^0.1.2"
 
@@ -723,8 +723,8 @@ error-ex@^1.2.0:
     is-arrayish "^0.2.1"
 
 es5-ext@^0.10.14, es5-ext@^0.10.9, es5-ext@~0.10.14:
-  version "0.10.29"
-  resolved "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.29.tgz#768eb2dfc4957bcf35fa0568f193ab71ede53fd8"
+  version "0.10.30"
+  resolved "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.30.tgz#7141a16836697dbabfaaaeee41495ce29f52c939"
   dependencies:
     es6-iterator "2"
     es6-symbol "~3.1"
