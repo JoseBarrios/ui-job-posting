@@ -91,8 +91,12 @@ class JobPostingViewController extends HTMLElement{
 	}
 	set value(value){
 		this.model = new JobPosting(value);
-		this.model.hiringOrganization = new Organization(value.hiringOrganization);
-		this.model.hiringOrganization.address = new PostalAddress(this.model.hiringOrganization.address);
+		if(value.hiringOrganization){
+			this.model.hiringOrganization = new Organization(value.hiringOrganization);
+			if(value.hiringOrganization.address){
+				this.model.hiringOrganization.address = new PostalAddress(this.model.hiringOrganization.address);
+			}
+		}
 		//DO NOT UPDATE ATTRIBUTE HERE, OTHERWISE INFINITE LOOP HAPPENS
 		this._updateRender();
 		this._updateEvent();

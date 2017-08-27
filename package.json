@@ -31,7 +31,7 @@
     "yarn": "^0.27.5"
   },
   "dependencies": {
-    "@josebarrios/job-posting": "^0.2.6",
+    "@josebarrios/job-posting": "^0.2.8",
     "@josebarrios/organization": "^1.1.7",
     "@josebarrios/postal-address": "^0.1.7"
   }

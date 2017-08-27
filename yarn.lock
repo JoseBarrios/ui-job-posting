@@ -14,7 +14,7 @@
   dependencies:
     "@josebarrios/thing" "^0.3.19"
 
-"@josebarrios/job-posting@^0.2.6":
+"@josebarrios/job-posting@^0.2.8":
   version "0.2.8"
   resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.8.tgz#aaffa22e86951ccf336ea5b0582afd62e5fd47af"
   dependencies:
