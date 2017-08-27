@@ -17977,25 +17977,37 @@ class JobPosting extends Intangible {
   set datePosted(value){ this.computed.datePosted = value; }
 
   get educationRequirements(){ return this.computed.educationRequirements; }
-  set educationRequirements(value){ this.computed.educationRequirements = value; }
+	set educationRequirements(value){
+    if(Intangible.isArray(value)){ this.computed.educationRequirements = value.join('\n'); }
+    else if(Intangible.isString(value)) { this.computed.educationRequirements = value; }
+	}
 
   get employmentType(){ return this.computed.employmentType; }
   set employmentType(value){ this.computed.employmentType = value; }
 
   get experienceRequirements(){ return this.computed.experienceRequirements; }
-  set experienceRequirements(value){ this.computed.experienceRequirements = value; }
+	set experienceRequirements(value){
+    if(Intangible.isArray(value)){ this.computed.experienceRequirements = value.join('\n'); }
+    else if(Intangible.isString(value)) { this.computed.experienceRequirements = value; }
+	}
 
   get hiringOrganization(){ return this.computed.hiringOrganization; }
   set hiringOrganization(value){ this.computed.hiringOrganization = value; }
 
   get incentiveCompensation(){ return this.computed.incentiveCompensation; }
-	set incentiveCompensation(value){ this.computed.incentiveCompensation = value; }
+	set incentiveCompensation(value){
+    if(Intangible.isArray(value)){ this.computed.incentiveCompensation = value.join('\n'); }
+    else if(Intangible.isString(value)) { this.computed.incentiveCompensation = value; }
+	}
 
   get industry(){ return this.computed.industry; }
   set industry(value){ this.computed.industry = value; }
 
   get jobBenefits(){ return this.computed.jobBenefits; }
-	set jobBenefits(value){ this.computed.jobBenefits = value; }
+	set jobBenefits(value){
+    if(Intangible.isArray(value)){ this.computed.jobBenefits = value.join('\n'); }
+    else if(Intangible.isString(value)) { this.computed.jobBenefits = value; }
+	}
 
   get jobLocation(){ return this.computed.jobLocation; }
   set jobLocation(value){ this.computed.jobLocation = value; }
@@ -18004,16 +18016,25 @@ class JobPosting extends Intangible {
   set occupationalCategory(value){ this.computed.occupationalCategory = value; }
 
   get qualifications(){ return this.computed.qualifications; }
-  set qualifications(value){ this.computed.qualifications = value; }
+	set qualifications(value){
+    if(Intangible.isArray(value)){ this.computed.qualifications = value.join('\n'); }
+    else if(Intangible.isString(value)) { this.computed.qualifications = value; }
+	}
 
   get responsibilities(){ return this.computed.responsibilities; }
-  set responsibilities(value){ this.computed.responsibilities = value; }
+	set responsibilities(value){
+    if(Intangible.isArray(value)){ this.computed.responsibilities = value.join('\n'); }
+    else if(Intangible.isString(value)) { this.computed.responsibilities = value; }
+	}
 
   get salaryCurrency(){ return this.computed.salaryCurrency; }
   set salaryCurrency(value){ this.computed.salaryCurrency = value; }
 
   get skills(){ return this.computed.skills; }
-	set skills(value){ this.computed.skills = value; }
+	set skills(value){
+    if(Intangible.isArray(value)){ this.computed.skills = value.join('\n'); }
+    else if(Intangible.isString(value)) { this.computed.skills = value; }
+	}
 
   get specialCommitments(){ return this.computed.specialCommitments; }
   set specialCommitments(value){ this.computed.specialCommitments = value; }
