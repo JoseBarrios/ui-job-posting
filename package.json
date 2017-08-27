@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/yarn/bin/yarn upgrade; ./node_modules/webpack/bin/webpack.js",
-    "test": "./node_modules/http-server/bin/http-server"
+    "test": "yarn upgrade; npm run-script build; ./node_modules/http-server/bin/http-server"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "yarn": "^0.27.5"
   },
   "dependencies": {
-    "@josebarrios/job-posting": "^0.2.1",
+    "@josebarrios/job-posting": "^0.2.6",
     "@josebarrios/organization": "^1.1.7",
     "@josebarrios/postal-address": "^0.1.7"
   }
