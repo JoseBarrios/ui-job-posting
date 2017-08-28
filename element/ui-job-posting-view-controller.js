@@ -330,7 +330,7 @@ class JobPostingViewController extends HTMLElement{
 			//EDUCATION REQUIREMENTS
 			if(this.$educationRequirements && this.model.educationRequirements){
 				this.$educationRequirements.innerText = '';
-				this.model.educationRequirements.split('\n').forEach((requirement,index) => {
+				this.model.educationRequirements.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -346,7 +346,7 @@ class JobPostingViewController extends HTMLElement{
 
 			if(this.$experienceRequirements && this.model.experienceRequirements){
 				this.$experienceRequirements.innerText = '';
-				this.model.experienceRequirements.split('\n').forEach((requirement,index) => {
+				this.model.experienceRequirements.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -366,7 +366,7 @@ class JobPostingViewController extends HTMLElement{
 
 			if(this.$incentiveCompensation && this.model.incentiveCompensation){
 				this.$incentiveCompensation.innerText = '';
-				this.model.incentiveCompensation.split('\n').forEach((requirement,index) => {
+				this.model.incentiveCompensation.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -383,7 +383,7 @@ class JobPostingViewController extends HTMLElement{
 			//JOB BENEFITS
 			if(this.$jobBenefits && this.model.jobBenefits){
 				this.$jobBenefits.innerText = '';
-				this.model.jobBenefits.split('\n').forEach((requirement,index) => {
+				this.model.jobBenefits.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -408,7 +408,7 @@ class JobPostingViewController extends HTMLElement{
 			//QUALIFICATIONS
 			if(this.$qualifications && this.model.qualifications){
 				this.$qualifications.innerText = '';
-				this.model.qualifications.split('\n').forEach((requirement,index) => {
+				this.model.qualifications.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -422,7 +422,7 @@ class JobPostingViewController extends HTMLElement{
 			//RESPONSABILITIES
 			if(this.$responsibilities && this.model.responsibilities){
 				this.$responsibilities.innerText = '';
-				this.model.responsibilities.split('\n').forEach((requirement,index) => {
+				this.model.responsibilities.split(';').forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
 						p.innerText = `• ${requirement}`;
@@ -440,7 +440,7 @@ class JobPostingViewController extends HTMLElement{
 
 			if(this.$skills && this.model.skills){
 				this.$skills.innerText = '';
-				this.model.skills.split('\n').forEach((requirement,index) => {
+				this.model.skills.split(';').forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
 						p.innerText = `• ${requirement}`;
