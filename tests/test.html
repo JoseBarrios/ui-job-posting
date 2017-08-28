@@ -5,7 +5,7 @@
 
 
 <body style="background-color:#e8ebf2">
-	<ui-job-posting></ui-job-posting>
+	<ui-job-posting apply-to-email="apply@email.com"></ui-job-posting>
 </body>
 
 <script>
@@ -30,6 +30,7 @@ $jobPosting.baseSalary = "UPDATED";
 $jobPosting.salaryCurrency = "UPDATED";
 $jobPosting.incentiveCompensation = "UPDATED \n UPDATED";
 $jobPosting.specialCommitments = "UPDATED";
+//$jobPosting.applyToEmail = "hello@world.com";
 
 //Can modify all at once
 let obj = {};
@@ -50,7 +51,8 @@ obj.baseSalary = "UPDATED2";
 obj.salaryCurrency = "UPDATED2";
 obj.incentiveCompensation = "UPDATED2 \n UPDATED2";
 obj.specialCommitments = "UPDATED2";
-$jobPosting.value = obj;
+obj.applyToEmail = "hello2@world.com";
+//$jobPosting.value = obj;
 
 //$jobPosting.setAttribute('value', JSON.stringify({ "type" : "JobPosting" , "title" : "JOB TITLE", "hiringOrganization" : { "name" : "UPDATED", "disambiguatingDescription" : "UPDATED", "description":"UPDATED","address" : { "addressLocality" : "UPDATED", "addressRegion":"UPDATED"} } });
 //$jobPosting.value = { "type" : "JobPosting" , "title" : "UPDATED" };

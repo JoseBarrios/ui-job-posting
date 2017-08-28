@@ -18047,6 +18047,7 @@ class JobPosting extends Intangible {
 
   get workHours(){ return this.computed.workHours; }
   set workHours(value){ this.computed.workHours = value; }
+
 }
 
 module.exports = JobPosting;

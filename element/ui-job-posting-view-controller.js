@@ -5,7 +5,7 @@ const uiJobPostingTemplate = uiJobPostingDocument.ownerDocument.querySelector('#
 class JobPostingViewController extends HTMLElement{
 
 	static get observedAttributes() {
-		return ["value", "preview"];
+		return ["value", "preview", "apply-to-email"];
 	}
 
   constructor(model){
@@ -54,6 +54,15 @@ class JobPostingViewController extends HTMLElement{
 		this.$description = this.shadowRoot.querySelector('#description');
 		this.$descriptionContainer = this.shadowRoot.querySelector('.description-container');
 		this.$image = this.shadowRoot.querySelector('#image');
+		this.$applyToEmail = this.shadowRoot.querySelector('#applyToEmail');
+		this.$applyToEmail.addEventListener('click', e => {
+			let email = encodeURIComponent(`${this.applyToEmail}, jobs@bevisible.soy`);
+			let cc = encodeURIComponent('jobs@bevisible.soy');
+			let subject = encodeURIComponent(`Job Application: ${this.title} | BeVisible`);
+			let body = encodeURIComponent(`Dear recruiter,\n\n Attached please find my coverletter and resume. I look forward to hearing from you. \n\n Sincerely, \n\n [Your name] \n\n PS. Don't forget to attach your coverletter and resume`);
+			location.href=`mailto:${email}?&subject=${subject}&body=${body}`;
+
+		});
 
 		this.connected = true;
 		this._updateRender();
@@ -67,6 +76,10 @@ class JobPostingViewController extends HTMLElement{
 			case 'preview':
 				this.preview = (newVal === 'true');
 				break;
+			case 'apply-to-email':
+				this.applyToEmail = newVal;
+				break;
+
 			default:
 				console.warn(`Attribute #{attrName} is not handled... go do that`);
 		}
@@ -294,6 +307,12 @@ class JobPostingViewController extends HTMLElement{
 		this.model.url = value
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
+
+	get applyToEmail(){return this._applyToEmail;}
+	set applyToEmail(value){
+		this._applyToEmail = value
+	}
+
 
 	_updateEvent(){
 		this.dispatchEvent(new CustomEvent(this.defaultEventName, {detail: {value: this.value}, bubbles:false}));

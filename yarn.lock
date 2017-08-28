@@ -14,9 +14,9 @@
   dependencies:
     "@josebarrios/thing" "^0.3.19"
 
-"@josebarrios/job-posting@^0.2.8":
-  version "0.2.8"
-  resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.8.tgz#aaffa22e86951ccf336ea5b0582afd62e5fd47af"
+"@josebarrios/job-posting@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.npmjs.org/@josebarrios/job-posting/-/job-posting-0.2.10.tgz#36b5dae79494bb8e92f0915df8d7926d56ee7421"
   dependencies:
     "@josebarrios/intangible" "^0.1.2"
 
@@ -44,9 +44,9 @@
   dependencies:
     lodash "^4.17.4"
 
-"@josebarrios/ui-organization-card@^0.2.6":
-  version "0.2.8"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.2.8.tgz#f18f0e597df717de48006ba114efc38c811d6823"
+"@josebarrios/ui-organization-card@^0.2.9":
+  version "0.2.9"
+  resolved "https://registry.npmjs.org/@josebarrios/ui-organization-card/-/ui-organization-card-0.2.9.tgz#d19afa80646239c9aaa4d519b08d7055ebe3330e"
   dependencies:
     "@josebarrios/organization" "^1.1.7"
     "@josebarrios/postal-address" "^0.1.7"
