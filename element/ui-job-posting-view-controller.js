@@ -5,7 +5,7 @@ const uiJobPostingTemplate = uiJobPostingDocument.ownerDocument.querySelector('#
 class JobPostingViewController extends HTMLElement{
 
 	static get observedAttributes() {
-		return ["value", "preview", "apply-to-email"];
+		return ["value", "preview", "action"];
 	}
 
   constructor(model){
@@ -52,15 +52,8 @@ class JobPostingViewController extends HTMLElement{
 		this.$description = this.shadowRoot.querySelector('#description');
 		this.$descriptionContainer = this.shadowRoot.querySelector('.description-container');
 		this.$image = this.shadowRoot.querySelector('#image');
-		this.$applyToEmail = this.shadowRoot.querySelector('#applyToEmail');
-		this.$applyToEmail.addEventListener('click', e => {
-			let email = encodeURIComponent(`${this.applyToEmail}`);
-			let cc = encodeURIComponent('jobs@bevisible.soy');
-			let subject = encodeURIComponent(`${this.hiringOrganization.name} | ${this.title} | BeVisible`);
-			let body = encodeURIComponent(`Dear recruiter,\n\n Attached please find my coverletter and resume. I look forward to hearing from you. \n\n Sincerely, \n\n [Your name] \n\n PS. Don't forget to attach your coverletter and resume`);
-			location.href=`mailto:${email}?&subject=${subject}&body=${body}`;
-
-		});
+		this.$applyButton = this.shadowRoot.querySelector('#applyButton');
+		this.$applyButton.addEventListener('click', e => { location.href=`${this.action}`; });
 		this.connected = true;
 		this._updateRender();
 	}
@@ -73,8 +66,8 @@ class JobPostingViewController extends HTMLElement{
 			case 'preview':
 				this.preview = (newVal === 'true');
 				break;
-			case 'apply-to-email':
-				this.applyToEmail = newVal;
+			case 'action':
+				this.action = newVal;
 				break;
 
 			default:
@@ -304,9 +297,9 @@ class JobPostingViewController extends HTMLElement{
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
-	get applyToEmail(){return this._applyToEmail;}
-	set applyToEmail(value){
-		this._applyToEmail = value
+	get action(){return this._action;}
+	set action(value){
+		this._action = value
 	}
 
 	_updateEvent(){

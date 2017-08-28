@@ -5,7 +5,8 @@
 
 
 <body style="background-color:#e8ebf2">
-	<ui-job-posting apply-to-email="apply@email.com"></ui-job-posting>
+	<!--<ui-job-posting action="mailto:updated@email.com"></ui-job-posting>-->
+	<ui-job-posting action="https://google.com"></ui-job-posting>
 </body>
 
 <script>
@@ -34,6 +35,7 @@ $jobPosting.salaryCurrency = "SALARY-CURRENCY";
 $jobPosting.incentiveCompensation = "INCETIVE; INCETIVE";
 $jobPosting.specialCommitments = "SPECIAL-COMITTMENTS";
 $jobPosting.applyToEmail = "applyTo@email.com";
+$jobPosting.href = "mailto:applyTo@email.com";
 
 //Can modify all at once
 //let obj = {};
