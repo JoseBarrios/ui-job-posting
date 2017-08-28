@@ -433,7 +433,7 @@ class JobPostingViewController extends HTMLElement{
 				})
 			}
 			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
-			else if(this.$responsibilities && !this.preview){ this.$responsibilitiesContainer.hidden = true; }
+			else if(this.$responsibilitiesContainer && !this.preview){ this.$responsibilitiesContainer.hidden = true; }
 
 			if(this.$salaryCurrency && this.model.salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency}
 			else if(this.$salaryCurrency && !this.preview){ this.$salaryCurrency.hidden = true; }
