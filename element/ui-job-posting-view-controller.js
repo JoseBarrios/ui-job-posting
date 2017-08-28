@@ -56,9 +56,9 @@ class JobPostingViewController extends HTMLElement{
 		this.$image = this.shadowRoot.querySelector('#image');
 		this.$applyToEmail = this.shadowRoot.querySelector('#applyToEmail');
 		this.$applyToEmail.addEventListener('click', e => {
-			let email = encodeURIComponent(`${this.applyToEmail}, jobs@bevisible.soy`);
+			let email = encodeURIComponent(`${this.applyToEmail}`);
 			let cc = encodeURIComponent('jobs@bevisible.soy');
-			let subject = encodeURIComponent(`Job Application: ${this.title} | BeVisible`);
+			let subject = encodeURIComponent(`${this.hiringOrganization.name} | ${this.title} | BeVisible`);
 			let body = encodeURIComponent(`Dear recruiter,\n\n Attached please find my coverletter and resume. I look forward to hearing from you. \n\n Sincerely, \n\n [Your name] \n\n PS. Don't forget to attach your coverletter and resume`);
 			location.href=`mailto:${email}?&subject=${subject}&body=${body}`;
 
@@ -472,7 +472,7 @@ class JobPostingViewController extends HTMLElement{
 				this.$image.src = this.model.image
 				this.$image.style.display = "block";
 			}
-			else if (this.$image && !this.preview){ this.$image.style.display = "none"; }
+			//else if (this.$image && !this.preview){ this.$image.style.display = "none"; }
 		}
 	}
 
