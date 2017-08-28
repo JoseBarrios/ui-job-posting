@@ -17,8 +17,6 @@ class JobPostingViewController extends HTMLElement{
 		this.connected = false;
 		this.listOffset = '0.8em';
 		this.preview = false;
-
-		this.defaultEventName = "update";
   }
 
 	///STANDARD
@@ -42,7 +40,7 @@ class JobPostingViewController extends HTMLElement{
 		this.$qualificationsContainer = this.shadowRoot.querySelector('.qualifications-container');
 		this.$qualifications = this.shadowRoot.querySelector('#qualifications');
 		this.$responsibilities = this.shadowRoot.querySelector('#responsibilities');
-		//this.$responsibilitiesContainer = this.shadowRoot.querySelector('.responsibilities-container');
+		this.$responsibilitiesContainer = this.shadowRoot.querySelector('.responsibilities-container');
 		this.$salaryCurrency = this.shadowRoot.querySelector('#salaryCurrency');
 		this.$skills = this.shadowRoot.querySelector('#skills');
 		this.$skillsContainer = this.shadowRoot.querySelector('.skills-container');
@@ -63,7 +61,6 @@ class JobPostingViewController extends HTMLElement{
 			location.href=`mailto:${email}?&subject=${subject}&body=${body}`;
 
 		});
-
 		this.connected = true;
 		this._updateRender();
 	}
@@ -88,7 +85,6 @@ class JobPostingViewController extends HTMLElement{
 
 	get shadowRoot(){return this._shadowRoot;}
 	set shadowRoot(value){ this._shadowRoot = value}
-
 
 	//MASTER
 	get value(){
@@ -313,23 +309,29 @@ class JobPostingViewController extends HTMLElement{
 		this._applyToEmail = value
 	}
 
-
 	_updateEvent(){
-		this.dispatchEvent(new CustomEvent(this.defaultEventName, {detail: {value: this.value}, bubbles:false}));
+		this.dispatchEvent(new CustomEvent('update', {detail: this.value, bubbles:false}));
 	}
 
 	_updateRender(){
 		if(this.connected && this.model){
 
-			if(this.$baseSalary && this.model.baseSalary){ this.$baseSalary.innerText = this.model.baseSalary}
-			else if(this.$baseSalary && !this.preview){ this.$baseSalary.hidden = true}
+			//BASE SALARY
+			if(this.$baseSalary && this.model.baseSalary){
+				this.$baseSalary.innerText = this.model.baseSalary;
+				this.$baseSalary.hidden = false;
+			} else if(this.$baseSalary && !this.preview){ this.$baseSalary.hidden = true}
 
-			if(this.$datePosted && this.model.datePosted){ this.$datePosted.innerText = this.model.datePosted}
-			else if(this.$datePosted && !this.preview){ this.$datePosted.hidden = true}
+			//DATE POSTED
+			if(this.$datePosted && this.model.datePosted){
+				this.$datePosted.innerText = this.model.datePosted;
+				this.$datePosted.hidden = false;
+			} else if(this.$datePosted && !this.preview){ this.$datePosted.hidden = true}
 
 			//EDUCATION REQUIREMENTS
 			if(this.$educationRequirements && this.model.educationRequirements){
 				this.$educationRequirements.innerText = '';
+				this.$educationRequirementsContainer.hidden = false;
 				this.model.educationRequirements.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
@@ -337,15 +339,20 @@ class JobPostingViewController extends HTMLElement{
 					p.style.margin = this.listOffset;
 					this.$educationRequirements.appendChild(p);
 				})
-			}
-			else if(this.$educationRequirements && !this.preview){ this.$educationRequirementsContainer.hidden = true}
+			} else if(this.$educationRequirements && !this.preview){ this.$educationRequirementsContainer.hidden = true}
 
 
-			if(this.$employmentType && this.model.employmentType){ this.$employmentType.innerText = this.model.employmentType}
-			else if(this.$employmentType && !this.preview){ this.$employmentType.hidden = true}
+			//EMPLOYMENT TYPE
+			if(this.$employmentType && this.model.employmentType){
+				this.$employmentType.innerText = this.model.employmentType;
+				this.$employmentType.hidden = false;
+			} else if(this.$employmentType && !this.preview){ this.$employmentType.hidden = true}
 
+
+			//EXPERIENCE REQUIREMENTS
 			if(this.$experienceRequirements && this.model.experienceRequirements){
 				this.$experienceRequirements.innerText = '';
+				this.$experienceRequirementsContainer.hidden = false;
 				this.model.experienceRequirements.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
@@ -353,19 +360,19 @@ class JobPostingViewController extends HTMLElement{
 					p.style.margin = this.listOffset;
 					this.$experienceRequirements.appendChild(p);
 				})
-			}
-			else if(this.$experienceRequirements && !this.preview){ this.$experienceRequirementsContainer.hidden = true; }
+			} else if(this.$experienceRequirements && !this.preview){ this.$experienceRequirementsContainer.hidden = true; }
 
-			//ELEMENT SET VALUE
+			//HIRING ORGANIZATION
 			if(this.$hiringOrganization && this.hiringOrganization){
-				//this.$hiringOrganization.value = this.hiringOrganization;
+				//SAFARI FRIENDLY
 				this.$hiringOrganization.setAttribute('value', JSON.stringify(this.hiringOrganization));
-			}
-			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
-			else if(this.$hiringOrganization && !this.preview){ this.$hiringOrganization.hidden = true; }
+				this.$hiringOrganization.hidden = false;
+			} else if(this.$hiringOrganization && !this.preview){ this.$hiringOrganization.hidden = true; }
 
+			//INCENTIVE COMPENSATION
 			if(this.$incentiveCompensation && this.model.incentiveCompensation){
 				this.$incentiveCompensation.innerText = '';
+				this.$incentiveCompensationContainer.hidden = false;
 				this.model.incentiveCompensation.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
@@ -373,16 +380,20 @@ class JobPostingViewController extends HTMLElement{
 					p.style.margin = this.listOffset;
 					this.$incentiveCompensation.appendChild(p);
 				})
-			}
-			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
-			else if(this.$incentiveCompensation && !this.preview){ this.$incentiveCompensationContainer.hidden = true; }
+			} else if(this.$incentiveCompensation && !this.preview){ this.$incentiveCompensationContainer.hidden = true; }
 
-			if(this.$industry && this.model.industry){ this.$industry.innerText = this.model.industry}
-			else if(this.$industry && !this.preview){ this.$industry.hidden = true; }
+
+			//INDUSTRY
+			if(this.$industry && this.model.industry){
+				this.$industry.innerText = this.model.industry;
+				this.$industry.hidden = false;
+			} else if(this.$industry && !this.preview){ this.$industry.hidden = true; }
+
 
 			//JOB BENEFITS
 			if(this.$jobBenefits && this.model.jobBenefits){
 				this.$jobBenefits.innerText = '';
+				this.$jobBenefitsContainer.hidden = false;
 				this.model.jobBenefits.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
@@ -390,24 +401,28 @@ class JobPostingViewController extends HTMLElement{
 					p.style.margin = this.listOffset;
 					this.$jobBenefits.appendChild(p);
 				})
-			}
-			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
-			else if(this.$jobBenefits && !this.preview){ this.$jobBenefitsContainer.hidden = true; }
+			} else if(this.$jobBenefits && !this.preview){ this.$jobBenefitsContainer.hidden = true; }
 
+			//JOB LOCATION
 			if(this.$jobLocation && this.model.jobLocation){
 				let city = this.model.jobLocation.addressLocality;
 				let region = this.model.jobLocation.addressRegion;
 				let country = this.model.jobLocation.addressCountry;
 				this.$jobLocation.innerText =`${city}, ${region} ${country === 'United States' || !country ? '' : "("+country+")"}`
+				this.$jobLocation.hidden = false;
 			}
 			else if(this.$jobLocation && !this.preview){ this.$jobLocation.hidden = true; }
 
-			if(this.$occupationalCategory && this.model.occupationalCategory){ this.$occupationalCategory.innerText = this.model.occupationalCategory}
-			else if(this.$occupationalCategory && !this.preview){ this.$occupationalCategory.hidden = true; }
+			//OCUPATIONAL CATEGORY
+			if(this.$occupationalCategory && this.model.occupationalCategory){
+				this.$occupationalCategory.innerText = this.model.occupationalCategory;
+				this.$occupationalCategory.hidden = false;
+			} else if(this.$occupationalCategory && !this.preview){ this.$occupationalCategory.hidden = true; }
 
 			//QUALIFICATIONS
 			if(this.$qualifications && this.model.qualifications){
 				this.$qualifications.innerText = '';
+				this.$qualificationsContainer.hidden = false;
 				this.model.qualifications.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `• ${requirement}`;
@@ -415,13 +430,13 @@ class JobPostingViewController extends HTMLElement{
 					p.style.margin = this.listOffset;
 					this.$qualifications.appendChild(p);
 				})
-			}
-			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
-			else if(this.$qualifications && !this.preview){ this.$qualificationsContainer.hidden = true; }
+			} else if(this.$qualifications && !this.preview){ this.$qualificationsContainer.hidden = true; }
+
 
 			//RESPONSABILITIES
 			if(this.$responsibilities && this.model.responsibilities){
 				this.$responsibilities.innerText = '';
+				this.$responsibilitiesContainer.hidden = false;
 				this.model.responsibilities.split(';').forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
@@ -431,15 +446,18 @@ class JobPostingViewController extends HTMLElement{
 						this.$responsibilities.appendChild(p);
 					}
 				})
-			}
-			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
-			else if(this.$responsibilitiesContainer && !this.preview){ this.$responsibilitiesContainer.hidden = true; }
+			} else if(this.$responsibilitiesContainer && !this.preview){ this.$responsibilitiesContainer.hidden = true; }
 
-			if(this.$salaryCurrency && this.model.salaryCurrency){ this.$salaryCurrency.innerText = this.model.salaryCurrency}
-			else if(this.$salaryCurrency && !this.preview){ this.$salaryCurrency.hidden = true; }
+			//SALARY CURRENCY
+			if(this.$salaryCurrency && this.model.salaryCurrency){
+				this.$salaryCurrency.innerText = this.model.salaryCurrency;
+				this.$salaryCurrency.hidden = false;
+			} else if(this.$salaryCurrency && !this.preview){ this.$salaryCurrency.hidden = true; }
 
+			//SKILLS
 			if(this.$skills && this.model.skills){
 				this.$skills.innerText = '';
+				this.$skillsContainer.hidden = false;
 				this.model.skills.split(';').forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
@@ -449,24 +467,38 @@ class JobPostingViewController extends HTMLElement{
 						this.$skills.appendChild(p);
 					}
 				})
-			}
-			//CANT HIDE, CUSTOM ELEMENT NEEDS TO HANDLE HIDDEN ATTR
-			else if(this.$skills && !this.preview){ this.$skillsContainer.hidden = true; }
+			} else if(this.$skills && !this.preview){ this.$skillsContainer.hidden = true; }
 
-			if(this.$specialCommitments && this.model.specialCommitments){ this.$specialCommitments.innerText = this.model.specialCommitments}
-			else if(this.$specialCommitments && !this.preview){ this.$specialCommitmentsContainer.hidden = true; }
+			//SPECIAL COMMITMENTS
+			if(this.$specialCommitments && this.model.specialCommitments){
+				this.$specialCommitments.innerText = this.model.specialCommitments;
+				this.$specialCommitmentsContainer.hidden = false;
+			} else if(this.$specialCommitments && !this.preview){ this.$specialCommitmentsContainer.hidden = true; }
 
-			if(this.$title && this.model.title){ this.$title.innerText = this.model.title}
-			else if (this.$title && !this.preview){ this.$title.hidden = true; }
+			//TITLE
+			if(this.$title && this.model.title){
+				this.$title.innerText = this.model.title;
+				this.$title.hidden = false;
+			} else if (this.$title && !this.model.title && !this.preview){ this.$title.hidden = true; }
 
-			if(this.$validThrough && this.model.validThrough){ this.$validThrough.innerText = this.model.validThrough}
-			else if (this.$validThrough && !this.preview){ this.$validThrough.hidden = true; }
+			//VALID THROUGH
+			if(this.$validThrough && this.model.validThrough){
+				this.$validThrough.innerText = this.model.validThrough;
+				this.$validThrough.hidden = false;
+			} else if (this.$validThrough && !this.preview){ this.$validThrough.hidden = true; }
 
-			if(this.$workHours && this.model.workHours){ this.$workHours.innerText = this.model.workHours}
-			else if (this.$workHours && !this.preview){ this.$workHours.hidden = true; }
+			//WORK HOURS
+			if(this.$workHours && this.model.workHours){
+				this.$workHours.innerText = this.model.workHours;
+				this.$workHours.hidden = false;
+			} else if (this.$workHours && !this.preview){ this.$workHours.hidden = true; }
 
-			if(this.$description && this.model.description){ this.$description.innerText = this.model.description}
-			else if (this.$description && !this.preview){ this.$descriptionContainer.hidden = true; }
+			//DESCRIPTION
+			if(this.$description && this.model.description){
+				this.$description.innerText = this.model.description;
+				this.$descriptionContainer.hidden = false;
+			} else if (this.$description && !this.preview){ this.$descriptionContainer.hidden = true; }
+
 
 			if(this.$image && this.model.image){
 				this.$image.src = this.model.image

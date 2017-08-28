@@ -10,53 +10,56 @@
 
 <script>
 const $jobPosting = document.querySelector('ui-job-posting');
-$jobPosting.addEventListener('update', function(e){ console.log('FIRED EVENT', e) })
+
+$jobPosting.addEventListener('update', (e) => {
+	console.log('FIRED EVENT', e.detail)
+})
 
 //Check each property
-$jobPosting.title = "UPDATED";
-$jobPosting.jobLocation = { "addressLocality" : "UPDATED", "addressRegion":"UPDATED", "addressCountry": "UPDATED" }
-$jobPosting.employmentType = "UPDATED";
-$jobPosting.workHours = "UPDATED";
-$jobPosting.datePosted = "UPDATED";
-$jobPosting.hiringOrganization = { "name" : "UPDATED", "description":"UPDATED", "disambiguatingDescription":"UPDATED", "address": { "addressLocality" : "UPDATED", "addressRegion":"UPDATED", "addressCountry": "UPDATED" }};
-$jobPosting.description = "UPDATED";
-$jobPosting.skills = "UPDATED \n UPDATED";
-$jobPosting.qualifications = "UPDATED \n UPDATED";
-$jobPosting.responsibilities = "UPDATED \n UPDATED";
-$jobPosting.educationRequirements = "UPDATED \n UPDATED";
-$jobPosting.experienceRequirements = "UPDATED  \n UPDATED";
-$jobPosting.jobBenefits = "UPDATED \n UPDATED";
-$jobPosting.baseSalary = "UPDATED";
-$jobPosting.salaryCurrency = "UPDATED";
-$jobPosting.incentiveCompensation = "UPDATED \n UPDATED";
-$jobPosting.specialCommitments = "UPDATED";
-//$jobPosting.applyToEmail = "hello@world.com";
+$jobPosting.title = "VERY LONG LONG LONG TITLE";
+$jobPosting.jobLocation = { "addressLocality" : "ADDRESS-LOCALITY", "addressRegion":"ADDRESS-REGION", "addressCountry": "ADDRESS-COUNTRY" }
+$jobPosting.employmentType = "EMPLOYMENT-TYPE";
+$jobPosting.workHours = "WORK-HOURS";
+$jobPosting.datePosted = "DATE-POSTED";
+$jobPosting.hiringOrganization = { "name" : "ORG-NAME", "description":"ORG-DESCRIPTION", "disambiguatingDescription":"ORG-DISAM-DESC", "address": { "addressLocality" : "ORG-ADDRESS-LOCALITY", "addressRegion":"ORG-ADDRESS-REGION", "addressCountry": "ORG-ADDRESS-COUNTRY" }};
+$jobPosting.description = "DESCRIPTION";
+$jobPosting.skills = "SKILL; SKILL";
+$jobPosting.qualifications = "QUAL; QUAL";
+$jobPosting.responsibilities = "RESP; RESP";
+$jobPosting.educationRequirements = "EDU; EDU";
+$jobPosting.experienceRequirements = "REQ; REQ";
+$jobPosting.jobBenefits = "BENEFIT; BENEFIT";
+$jobPosting.baseSalary = "BASE-SALARY";
+$jobPosting.salaryCurrency = "SALARY-CURRENCY";
+$jobPosting.incentiveCompensation = "INCETIVE; INCETIVE";
+$jobPosting.specialCommitments = "SPECIAL-COMITTMENTS";
+$jobPosting.applyToEmail = "applyTo@email.com";
 
 //Can modify all at once
-let obj = {};
-obj.title = "UPDATED2";
-obj.jobLocation = { "addressLocality" : "UPDATED2", "addressRegion":"UPDATED2", "addressCountry": "UPDATED2" }
-obj.employmentType = "UPDATED2";
-obj.workHours = "UPDATED2";
-obj.datePosted = "UPDATED2";
-obj.hiringOrganization = { "name" : "UPDATED2", "description":"UPDATED2", "disambiguatingDescription":"UPDATED2", "address": { "addressLocality" : "UPDATED2", "addressRegion":"UPDATED2", "addressCountry": "UPDATED2" }};
-obj.description = "UPDATED2";
-obj.skills = "UPDATED2 \n UPDATED2";
-obj.qualifications = "UPDATED2 \n UPDATED2";
-obj.responsibilities = "UPDATED2 \n UPDATED2";
-obj.educationRequirements = "UPDATED2 \n UPDATED2";
-obj.experienceRequirements = "UPDATED2 \n UPDATED2";
-obj.jobBenefits = "UPDATED2 \n UPDATED2";
-obj.baseSalary = "UPDATED2";
-obj.salaryCurrency = "UPDATED2";
-obj.incentiveCompensation = "UPDATED2 \n UPDATED2";
-obj.specialCommitments = "UPDATED2";
-obj.applyToEmail = "hello2@world.com";
+//let obj = {};
+//obj.title = "UPDATED2";
+//obj.jobLocation = { "addressLocality" : "UPDATED2", "addressRegion":"UPDATED2", "addressCountry": "UPDATED2" }
+//obj.employmentType = "UPDATED2";
+//obj.workHours = "UPDATED2";
+//obj.datePosted = "UPDATED2";
+//obj.hiringOrganization = { "name" : "UPDATED2", "description":"UPDATED2", "disambiguatingDescription": "UPDATED2", "address": { "addressLocality" : "UPDATED2", "addressRegion" : "UPDATED2", "addressCountry": "UPDATED2" }};
+//obj.description = "UPDATED2";
+//obj.skills = "UPDATED2 \n UPDATED2";
+//obj.qualifications = "UPDATED2 \n UPDATED2";
+//obj.responsibilities = "UPDATED2 \n UPDATED2";
+//obj.educationRequirements = "UPDATED2 \n UPDATED2";
+//obj.experienceRequirements = "UPDATED2 \n UPDATED2";
+//obj.jobBenefits = "UPDATED2 \n UPDATED2";
+//obj.baseSalary = "UPDATED2";
+//obj.salaryCurrency = "UPDATED2";
+//obj.incentiveCompensation = "UPDATED2 \n UPDATED2";
+//obj.specialCommitments = "UPDATED2";
+//obj.applyToEmail = "hello2@world.com";
 //$jobPosting.value = obj;
 
-//$jobPosting.setAttribute('value', JSON.stringify({ "type" : "JobPosting" , "title" : "JOB TITLE", "hiringOrganization" : { "name" : "UPDATED", "disambiguatingDescription" : "UPDATED", "description":"UPDATED","address" : { "addressLocality" : "UPDATED", "addressRegion":"UPDATED"} } });
-//$jobPosting.value = { "type" : "JobPosting" , "title" : "UPDATED" };
+//$jobPosting.setAttribute('value', JSON.stringify({ "type" : "JobPosting" , "title" : "JOB TITLE", "hiringOrganization" : { "name" : "UPDATED", "disambiguatingDescription" : "UPDATED", "description":"UPDATED", "address" : { "addressLocality" : "UPDATED", "addressRegion" : "UPDATED" } } }));
 
+//$jobPosting.value = { "type" : "JobPosting" , "title" : "UPDATED" };
 //setInterval(function(){
 //console.log('HELLO')
 //$jobPosting.setAttribute('value', JSON.stringify({ "type" : "JobPosting" , "title" : "JOB TITLE", "description":"UPDATED" }));
