@@ -5,7 +5,7 @@ const uiJobPostingTemplate = uiJobPostingDocument.ownerDocument.querySelector('#
 class JobPostingViewController extends HTMLElement{
 
 	static get observedAttributes() {
-		return ["value", "preview", "action"];
+		return ["value", "preview", "potential-action"];
 	}
 
   constructor(model){
@@ -53,7 +53,7 @@ class JobPostingViewController extends HTMLElement{
 		this.$descriptionContainer = this.shadowRoot.querySelector('.description-container');
 		this.$image = this.shadowRoot.querySelector('#image');
 		this.$applyButton = this.shadowRoot.querySelector('#applyButton');
-		this.$applyButton.addEventListener('click', e => { location.href=`${this.action}`; });
+		this.$applyButton.addEventListener('click', e => { location.href=`${this.potentialAction}`; });
 		this.connected = true;
 		this._updateRender();
 	}
@@ -66,8 +66,8 @@ class JobPostingViewController extends HTMLElement{
 			case 'preview':
 				this.preview = (newVal === 'true');
 				break;
-			case 'action':
-				this.action = newVal;
+			case 'potential-action':
+				this.potentialAction = newVal;
 				break;
 
 			default:
@@ -104,6 +104,11 @@ class JobPostingViewController extends HTMLElement{
 		this._updateEvent();
 	}
 
+	get potentialAction(){return this.model.potentialAction;}
+	set potentialAction(value){
+		this.model.potentialAction = value
+		this.setAttribute('value', JSON.stringify(this.value));
+	}
 
 	get baseSalary(){return this.model.baseSalary;}
 	set baseSalary(value){
@@ -295,11 +300,6 @@ class JobPostingViewController extends HTMLElement{
 	set url(value){
 		this.model.url = value
 		this.setAttribute('value', JSON.stringify(this.value));
-	}
-
-	get action(){return this._action;}
-	set action(value){
-		this._action = value
 	}
 
 	_updateEvent(){

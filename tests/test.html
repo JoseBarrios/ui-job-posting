@@ -5,7 +5,7 @@
 
 
 <body style="background-color:#e8ebf2">
-	<ui-job-posting action="https://google.com"></ui-job-posting>
+	<ui-job-posting potential-action="https://google.com"></ui-job-posting>
 </body>
 
 <script>
@@ -16,6 +16,7 @@ $jobPosting.addEventListener('update', (e) => {
 })
 
 //Check each property
+//$jobPosting.potentialAction = "ACTION";
 $jobPosting.title = "VERY LONG LONG LONG TITLE";
 $jobPosting.jobLocation = { "addressLocality" : "ADDRESS-LOCALITY", "addressRegion":"ADDRESS-REGION", "addressCountry": "ADDRESS-COUNTRY" }
 $jobPosting.employmentType = "EMPLOYMENT-TYPE";
