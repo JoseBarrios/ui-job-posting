@@ -449,17 +449,17 @@ class JobPostingViewController extends HTMLElement{
 
 			//SKILLS
 			if(this.$skills && this.model.skills){
-				this.$skills.innerText = '';
-				this.$skillsContainer.hidden = false;
-				this.model.skills.split(';').forEach((requirement,index) => {
-					if(requirement && requirement !== ''){
-						var p = document.createElement('p');
-						p.innerText = `• ${requirement}`;
-						p.style.paddingLeft = this.listOffset;
-						p.style.margin = this.listOffset;
-						this.$skills.appendChild(p);
-					}
-				})
+				this.$skills.innerText = this.model.skills;
+				//this.$skillsContainer.hidden = false;
+				//this.model.skills.split(';').forEach((requirement,index) => {
+					//if(requirement && requirement !== ''){
+						//var p = document.createElement('p');
+						//p.innerText = `• ${requirement}`;
+						//p.style.paddingLeft = this.listOffset;
+						//p.style.margin = this.listOffset;
+						//this.$skills.appendChild(p);
+					//}
+				//})
 			} else if(this.$skills && !this.preview){ this.$skillsContainer.hidden = true; }
 
 			//SPECIAL COMMITMENTS
