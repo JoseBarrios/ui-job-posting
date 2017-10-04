@@ -323,7 +323,15 @@ class JobPostingViewController extends HTMLElement{
 
 			//EDUCATION REQUIREMENTS
 			if(this.$educationRequirements && this.model.educationRequirements){
-				this.$educationRequirements.innerText = this.model.educationRequirements;
+				this.$educationRequirements.innerText = '';
+				this.$educationRequirementsContainer.hidden = false;
+				this.model.educationRequirements.split(';').forEach((requirement,index) => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$educationRequirements.appendChild(p);
+				})
 			} else if(this.$educationRequirements && !this.preview){ this.$educationRequirementsContainer.hidden = true}
 
 
@@ -336,7 +344,15 @@ class JobPostingViewController extends HTMLElement{
 
 			//EXPERIENCE REQUIREMENTS
 			if(this.$experienceRequirements && this.model.experienceRequirements){
-				this.$experienceRequirements.innerText = this.model.experienceRequirements;
+				this.$experienceRequirements.innerText = '';
+				this.$experienceRequirementsContainer.hidden = false;
+				this.model.experienceRequirements.split(';').forEach((requirement,index) => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$experienceRequirements.appendChild(p);
+				})
 			} else if(this.$experienceRequirements && !this.preview){ this.$experienceRequirementsContainer.hidden = true; }
 
 			//HIRING ORGANIZATION
@@ -348,8 +364,17 @@ class JobPostingViewController extends HTMLElement{
 
 			//INCENTIVE COMPENSATION
 			if(this.$incentiveCompensation && this.model.incentiveCompensation){
-				this.$incentiveCompensation.innerText = this.model.incentiveCompensation;
+				this.$incentiveCompensation.innerText = '';
+				this.$incentiveCompensationContainer.hidden = false;
+				this.model.incentiveCompensation.split(';').forEach((requirement,index) => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$incentiveCompensation.appendChild(p);
+				})
 			} else if(this.$incentiveCompensation && !this.preview){ this.$incentiveCompensationContainer.hidden = true; }
+
 
 			//INDUSTRY
 			if(this.$industry && this.model.industry){
@@ -357,9 +382,18 @@ class JobPostingViewController extends HTMLElement{
 				this.$industry.hidden = false;
 			} else if(this.$industry && !this.preview){ this.$industry.hidden = true; }
 
+
 			//JOB BENEFITS
 			if(this.$jobBenefits && this.model.jobBenefits){
-				this.$jobBenefits.innerText = this.model.jobBenefits;
+				this.$jobBenefits.innerText = '';
+				this.$jobBenefitsContainer.hidden = false;
+				this.model.jobBenefits.split(';').forEach((requirement,index) => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$jobBenefits.appendChild(p);
+				})
 			} else if(this.$jobBenefits && !this.preview){ this.$jobBenefitsContainer.hidden = true; }
 
 			//JOB LOCATION
@@ -380,13 +414,31 @@ class JobPostingViewController extends HTMLElement{
 
 			//QUALIFICATIONS
 			if(this.$qualifications && this.model.qualifications){
-				this.$qualifications.innerText = this.model.qualifications;
+				this.$qualifications.innerText = '';
+				this.$qualificationsContainer.hidden = false;
+				this.model.qualifications.split(';').forEach((requirement,index) => {
+					var p = document.createElement('p');
+					p.innerText = `• ${requirement}`;
+					p.style.paddingLeft = this.listOffset;
+					p.style.margin = this.listOffset;
+					this.$qualifications.appendChild(p);
+				})
 			} else if(this.$qualifications && !this.preview){ this.$qualificationsContainer.hidden = true; }
 
 
 			//RESPONSABILITIES
 			if(this.$responsibilities && this.model.responsibilities){
-				this.$responsibilities.innerText = this.model.responsibilities;
+				this.$responsibilities.innerText = '';
+				this.$responsibilitiesContainer.hidden = false;
+				this.model.responsibilities.split(';').forEach((requirement,index) => {
+					if(requirement && requirement !== ''){
+						var p = document.createElement('p');
+						p.innerText = `• ${requirement}`;
+						p.style.paddingLeft = this.listOffset;
+						p.style.margin = this.listOffset;
+						this.$responsibilities.appendChild(p);
+					}
+				})
 			} else if(this.$responsibilitiesContainer && !this.preview){ this.$responsibilitiesContainer.hidden = true; }
 
 			//SALARY CURRENCY
@@ -396,8 +448,19 @@ class JobPostingViewController extends HTMLElement{
 			} else if(this.$salaryCurrency && !this.preview){ this.$salaryCurrency.hidden = true; }
 
 			//SKILLS
-			if(this.$skills && this.model.skills){ this.$skills.innerText = this.model.skills; }
-			else if(this.$skills && !this.preview){ this.$skillsContainer.hidden = true; }
+			if(this.$skills && this.model.skills){
+				this.$skills.innerText = '';
+				this.$skillsContainer.hidden = false;
+				this.model.skills.split(';').forEach((requirement,index) => {
+					if(requirement && requirement !== ''){
+						var p = document.createElement('p');
+						p.innerText = `• ${requirement}`;
+						p.style.paddingLeft = this.listOffset;
+						p.style.margin = this.listOffset;
+						this.$skills.appendChild(p);
+					}
+				})
+			} else if(this.$skills && !this.preview){ this.$skillsContainer.hidden = true; }
 
 			//SPECIAL COMMITMENTS
 			if(this.$specialCommitments && this.model.specialCommitments){

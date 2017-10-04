@@ -26,8 +26,8 @@
   "devDependencies": {
     "@josebarrios/ui-organization-card": "^0.2.10",
     "http-server": "^0.10.0",
-    "mocha": "^3.4.2",
-    "webpack": "^3.3.0",
+    "mocha": "^3.5.3",
+    "webpack": "^3.6.0",
     "yarn": "^0.27.5"
   },
   "dependencies": {
