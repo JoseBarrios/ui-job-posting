@@ -33,6 +33,7 @@
   "dependencies": {
     "@josebarrios/job-posting": "^0.2.10",
     "@josebarrios/organization": "^1.1.7",
-    "@josebarrios/postal-address": "^0.1.7"
+    "@josebarrios/postal-address": "^0.1.7",
+    "@josebarrios/ui-share-button": "0.0.3"
   }
 }

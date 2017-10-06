@@ -54,6 +54,9 @@ class JobPostingViewController extends HTMLElement{
 		this.$image = this.shadowRoot.querySelector('#image');
 		this.$applyButton = this.shadowRoot.querySelector('#applyButton');
 		this.$applyButton.addEventListener('click', e => { location.href=`${this.potentialAction}`; });
+		this.$shareButtons = this.shadowRoot.querySelectorAll('ui-share-button')
+		this.$shareButtons.forEach(button => button.setAttribute('url', this.model.url));
+
 		this.connected = true;
 		this._updateRender();
 	}
@@ -218,6 +221,12 @@ class JobPostingViewController extends HTMLElement{
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
+	get url(){return this.model.url;}
+	set url(value){
+		this.model.url = value
+		this.setAttribute('value', JSON.stringify(this.value));
+	}
+
 	get title(){return this.model.title;}
 	set title(value){
 		this.model.title = value
@@ -308,6 +317,7 @@ class JobPostingViewController extends HTMLElement{
 
 	_updateRender(){
 		if(this.connected && this.model){
+			this.$shareButtons.forEach(button => button.setAttribute('url', this.model.url));
 
 			//BASE SALARY
 			if(this.$baseSalary && this.model.baseSalary){

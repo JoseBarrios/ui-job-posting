@@ -51,6 +51,10 @@
     "@josebarrios/organization" "^1.1.7"
     "@josebarrios/postal-address" "^0.1.7"
 
+"@josebarrios/ui-share-button@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/@josebarrios/ui-share-button/-/ui-share-button-0.0.3.tgz#cd4b17abd2a7b99fc1cd5e1a1bd3fff7adb955e1"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -2431,8 +2435,8 @@ tapable@^0.2.7:
   resolved "https://registry.npmjs.org/tapable/-/tapable-0.2.8.tgz#99372a5c999bf2df160afc0d74bed4f47948cd22"
 
 tar-fs@^1.15.1:
-  version "1.15.3"
-  resolved "https://registry.npmjs.org/tar-fs/-/tar-fs-1.15.3.tgz#eccf935e941493d8151028e636e51ce4c3ca7f20"
+  version "1.16.0"
+  resolved "https://registry.npmjs.org/tar-fs/-/tar-fs-1.16.0.tgz#e877a25acbcc51d8c790da1c57c9cf439817b896"
   dependencies:
     chownr "^1.0.1"
     mkdirp "^0.5.1"
