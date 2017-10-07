@@ -95,6 +95,7 @@ class JobPostingViewController extends HTMLElement{
 		return value;
 	}
 	set value(value){
+		console.log(value)
 		this.model = new JobPosting(value);
 		if(value.hiringOrganization){
 			this.model.hiringOrganization = new Organization(value.hiringOrganization);
@@ -123,6 +124,7 @@ class JobPostingViewController extends HTMLElement{
 
 	get datePosted(){return this.model.datePosted;}
 	set datePosted(value){
+		console.log('DATE POSTED', value)
 		this.model.datePosted = value
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
@@ -311,6 +313,19 @@ class JobPostingViewController extends HTMLElement{
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
+	humanizeDate(date){
+		let posted = moment(date);
+		let now = moment(Date.now());
+		let datePostedInDays = now.diff(posted, 'days');
+		let result = 'Posted Today';
+		if(datePostedInDays == 1){
+			result = `Posted ${datePostedInDays} day ago`;
+		}else if(datePostedInDays > 1){
+			result = `Posted ${datePostedInDays} days ago`;
+		}
+		return result;
+	}
+
 	_updateEvent(){
 		this.dispatchEvent(new CustomEvent('update', {detail: this.value, bubbles:false}));
 	}
@@ -327,7 +342,7 @@ class JobPostingViewController extends HTMLElement{
 
 			//DATE POSTED
 			if(this.$datePosted && this.model.datePosted){
-				this.$datePosted.innerText = this.model.datePosted;
+				this.$datePosted.innerText = this.humanizeDate(this.model.datePosted);
 				this.$datePosted.hidden = false;
 			} else if(this.$datePosted && !this.preview){ this.$datePosted.hidden = true}
 
