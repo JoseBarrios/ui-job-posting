@@ -44,9 +44,9 @@
   dependencies:
     lodash "^4.17.4"
 
-"@josebarrios/ui-job-posting-card@^0.1.34":
-  version "0.1.34"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-job-posting-card/-/ui-job-posting-card-0.1.34.tgz#00627872cad59eb4c5baf183f44215520fc6084b"
+"@josebarrios/ui-job-posting-card@^0.1.35":
+  version "0.1.35"
+  resolved "https://registry.npmjs.org/@josebarrios/ui-job-posting-card/-/ui-job-posting-card-0.1.35.tgz#949ec0cf3bd97672aa0d3e514b97740a0b26084d"
   dependencies:
     "@josebarrios/job-posting" "^0.2.10"
     "@josebarrios/organization" "^1.1.7"
@@ -59,9 +59,9 @@
     "@josebarrios/organization" "^1.1.7"
     "@josebarrios/postal-address" "^0.1.7"
 
-"@josebarrios/ui-share-button@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@josebarrios/ui-share-button/-/ui-share-button-0.0.4.tgz#52b795d4db1048c18a1a1b670f00edcb54d7917e"
+"@josebarrios/ui-share-button@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.npmjs.org/@josebarrios/ui-share-button/-/ui-share-button-0.0.5.tgz#bf2a01f2d4dba8cca80c9f23aa192944c8173d9f"
 
 abbrev@1:
   version "1.1.1"

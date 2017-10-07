@@ -311,8 +311,9 @@ class JobPostingViewController extends HTMLElement{
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
+
 	humanizeDate(date){
-		let posted = moment(date);
+		let posted = moment(date, 'YYYY-MM-DD');
 		let now = moment(Date.now());
 		let datePostedInDays = now.diff(posted, 'days');
 		let result = 'Posted Today';
