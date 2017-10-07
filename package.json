@@ -1,6 +1,6 @@
 {
   "name": "@josebarrios/ui-job-posting",
-  "version": "0.1.68",
+  "version": "0.1.69",
   "description": "A set of custom element for job posting",
   "main": "index.js",
   "scripts": {
