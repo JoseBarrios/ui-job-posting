@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/JoseBarrios/ui-job-posting#readme",
   "devDependencies": {
-    "@josebarrios/ui-organization-card": "^0.2.11",
     "http-server": "^0.10.0",
     "mocha": "^3.5.3",
     "webpack": "^3.6.0",
@@ -34,6 +33,7 @@
     "@josebarrios/job-posting": "^0.2.10",
     "@josebarrios/organization": "^1.1.7",
     "@josebarrios/postal-address": "^0.1.7",
+    "@josebarrios/ui-organization-card": "^0.2.11",
     "@josebarrios/ui-share-button": "0.0.3"
   }
 }
