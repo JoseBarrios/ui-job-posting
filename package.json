@@ -35,6 +35,6 @@
     "@josebarrios/postal-address": "^0.1.7",
     "@josebarrios/ui-job-posting-card": "^0.1.34",
     "@josebarrios/ui-organization-card": "^0.2.11",
-    "@josebarrios/ui-share-button": "0.0.4"
+    "@josebarrios/ui-share-button": "0.0.5"
   }
 }

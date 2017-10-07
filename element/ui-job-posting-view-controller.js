@@ -95,7 +95,6 @@ class JobPostingViewController extends HTMLElement{
 		return value;
 	}
 	set value(value){
-		console.log(value)
 		this.model = new JobPosting(value);
 		if(value.hiringOrganization){
 			this.model.hiringOrganization = new Organization(value.hiringOrganization);
@@ -124,7 +123,6 @@ class JobPostingViewController extends HTMLElement{
 
 	get datePosted(){return this.model.datePosted;}
 	set datePosted(value){
-		console.log('DATE POSTED', value)
 		this.model.datePosted = value
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
@@ -527,7 +525,7 @@ class JobPostingViewController extends HTMLElement{
 	}
 
 	disconnectedCallback() {
-		console.log('disconnected');
+		//console.log('disconnected');
 	}
 }
 
