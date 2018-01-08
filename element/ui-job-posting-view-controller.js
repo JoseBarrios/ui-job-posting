@@ -8,8 +8,8 @@ class JobPostingViewController extends HTMLElement{
 		return ["value", "preview", "potential-action"];
 	}
 
-  constructor(model){
-    super();
+	constructor(model){
+		super();
 		this.model = new JobPosting(model);
 		const view = document.importNode(uiJobPostingTemplate.content, true);
 		this.shadowRoot = this.attachShadow({mode: 'open'});
@@ -17,7 +17,7 @@ class JobPostingViewController extends HTMLElement{
 		this.connected = false;
 		this.listOffset = '0.8em';
 		this.preview = false;
-  }
+	}
 
 	///STANDARD
 	connectedCallback() {

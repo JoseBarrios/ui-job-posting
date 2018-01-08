@@ -1,40 +1,39 @@
 {
-  "name": "@josebarrios/ui-job-posting",
-  "version": "0.1.71",
-  "description": "A set of custom element for job posting",
-  "main": "index.js",
-  "scripts": {
-    "build": "./node_modules/yarn/bin/yarn upgrade; ./node_modules/webpack/bin/webpack.js",
-    "test": "npm upgrade; npm run-script build; ./node_modules/http-server/bin/http-server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JoseBarrios/ui-job-posting.git"
-  },
-  "keywords": [
-    "custom",
-    "element",
-    "class"
-  ],
-  "browser": "browser.js",
-  "author": "JoseBarrios",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/JoseBarrios/ui-job-posting/issues"
-  },
-  "homepage": "https://github.com/JoseBarrios/ui-job-posting#readme",
-  "devDependencies": {
-    "http-server": "^0.10.0",
-    "mocha": "^3.5.3",
-    "webpack": "^3.6.0",
-    "yarn": "^0.27.5"
-  },
-  "dependencies": {
-    "@josebarrios/job-posting": "^0.2.10",
-    "@josebarrios/organization": "^1.1.7",
-    "@josebarrios/postal-address": "^0.1.7",
-    "@josebarrios/ui-job-posting-card": "^0.1.35",
-    "@josebarrios/ui-organization-card": "^0.2.11",
-    "@josebarrios/ui-share-button": "0.0.5"
-  }
+	"name": "ui-job-posting",
+	"version": "0.1.0",
+	"description": "A set of custom element for job posting",
+	"main": "index.js",
+	"scripts": {
+		"build": "npm upgrade; ./node_modules/webpack/bin/webpack.js",
+		"test": "npm run-script build; ./node_modules/http-server/bin/http-server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JoseBarrios/ui-job-posting.git"
+	},
+	"keywords": [
+		"custom",
+		"element",
+		"class"
+	],
+	"browser": "browser.js",
+	"author": "JoseBarrios",
+	"license": "UNLICENSED",
+	"bugs": {
+		"url": "https://github.com/JoseBarrios/ui-job-posting/issues"
+	},
+	"homepage": "https://github.com/JoseBarrios/ui-job-posting#readme",
+	"devDependencies": {
+		"http-server": "^0.10.0",
+		"mocha": "^3.5.3",
+		"webpack": "^3.10.0",
+		"yarn": "^0.27.5"
+	},
+	"dependencies": {
+		"dc-job-posting": "^0.1.0",
+		"dc-organization": "^0.1.0",
+		"dc-postal-address": "^0.1.0",
+		"ui-organization-card": "^0.1.0",
+		"ui-share-button": "0.1.0"
+	}
 }
