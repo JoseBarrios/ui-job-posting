@@ -53,7 +53,9 @@ class JobPostingViewController extends HTMLElement{
 		this.$descriptionContainer = this.shadowRoot.querySelector('.description-container');
 		this.$image = this.shadowRoot.querySelector('#image');
 		this.$applyButton = this.shadowRoot.querySelector('#applyButton');
-		this.$applyButton.addEventListener('click', e => { location.href=`${this.potentialAction}`; });
+
+		this.$applyButton.addEventListener('click', e => { location.href=`mailto:applicant@bevisible.soy`; });
+
 		this.$shareButtons = this.shadowRoot.querySelectorAll('ui-share-button')
 		this.$shareButtons.forEach(button => button.setAttribute('url', this.model.url));
 
@@ -85,7 +87,7 @@ class JobPostingViewController extends HTMLElement{
 	//MASTER
 	get value(){
 		let value = {}
-		value = JobPosting.assignedProperties(this.model)
+		value = this.model
 		if(value.hiringOrganization){
 			value.hiringOrganization = Organization.assignedProperties(this.model.hiringOrganization)
 			if(value.hiringOrganization.address){
@@ -95,7 +97,7 @@ class JobPostingViewController extends HTMLElement{
 		return value;
 	}
 	set value(value){
-		this.model = new JobPosting(value);
+		this.model = value;
 		if(value.hiringOrganization){
 			this.model.hiringOrganization = new Organization(value.hiringOrganization);
 			if(value.hiringOrganization.address){
@@ -224,6 +226,7 @@ class JobPostingViewController extends HTMLElement{
 	get url(){return this.model.url;}
 	set url(value){
 		this.model.url = value
+		this.$applyButton.addEventListener('click', e => { location.href=`${this.model.url}`; });
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
@@ -520,6 +523,10 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$image && this.model.image){
 				this.$image.src = this.model.image
 				this.$image.style.display = "block";
+			}
+
+			if(this.$applyButton && this.model.url) {
+				this.$applyButton.addEventListener('click', e => { location.href=`${this.model.url}`; });
 			}
 			//else if (this.$image && !this.preview){ this.$image.style.display = "none"; }
 		}
