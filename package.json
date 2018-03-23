@@ -64,5 +64,5 @@
     "build": "npm upgrade; ./node_modules/webpack/bin/webpack.js",
     "test": "npm run-script build; ./node_modules/http-server/bin/http-server"
   },
-  "version": "0.1.4"
+  "version": "0.1.5"
 }
