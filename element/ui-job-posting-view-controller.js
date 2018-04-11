@@ -354,7 +354,7 @@ class JobPostingViewController extends HTMLElement{
 				this.$educationRequirementsContainer.hidden = false;
 				this.model.educationRequirements.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
-					p.innerText = `• ${requirement}`;
+					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
 					p.style.margin = this.listOffset;
 					this.$educationRequirements.appendChild(p);
@@ -375,7 +375,7 @@ class JobPostingViewController extends HTMLElement{
 				this.$experienceRequirementsContainer.hidden = false;
 				this.model.experienceRequirements.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
-					p.innerText = `• ${requirement}`;
+					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
 					p.style.margin = this.listOffset;
 					this.$experienceRequirements.appendChild(p);
@@ -395,7 +395,7 @@ class JobPostingViewController extends HTMLElement{
 				this.$incentiveCompensationContainer.hidden = false;
 				this.model.incentiveCompensation.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
-					p.innerText = `• ${requirement}`;
+					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
 					p.style.margin = this.listOffset;
 					this.$incentiveCompensation.appendChild(p);
@@ -416,7 +416,7 @@ class JobPostingViewController extends HTMLElement{
 				this.$jobBenefitsContainer.hidden = false;
 				this.model.jobBenefits.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
-					p.innerText = `• ${requirement}`;
+					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
 					p.style.margin = this.listOffset;
 					this.$jobBenefits.appendChild(p);
@@ -445,7 +445,7 @@ class JobPostingViewController extends HTMLElement{
 				this.$qualificationsContainer.hidden = false;
 				this.model.qualifications.split(';').forEach((requirement,index) => {
 					var p = document.createElement('p');
-					p.innerText = `• ${requirement}`;
+					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
 					p.style.margin = this.listOffset;
 					this.$qualifications.appendChild(p);
@@ -460,7 +460,7 @@ class JobPostingViewController extends HTMLElement{
 				this.model.responsibilities.split(';').forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
-						p.innerText = `• ${requirement}`;
+						p.innerText = `${requirement}`;
 						p.style.paddingLeft = this.listOffset;
 						p.style.margin = this.listOffset;
 						this.$responsibilities.appendChild(p);
@@ -481,7 +481,7 @@ class JobPostingViewController extends HTMLElement{
 				this.model.skills.split(';').forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
-						p.innerText = `• ${requirement}`;
+						p.innerText = `${requirement}`;
 						p.style.paddingLeft = this.listOffset;
 						p.style.margin = this.listOffset;
 						this.$skills.appendChild(p);
