@@ -10,7 +10,7 @@ class JobPostingViewController extends HTMLElement{
 
 	constructor(model){
 		super();
-		this.model = new JobPosting(model);
+		this.model = model
 		const view = document.importNode(uiJobPostingTemplate.content, true);
 		this.shadowRoot = this.attachShadow({mode: 'open'});
 		this.shadowRoot.appendChild(view);
@@ -46,6 +46,9 @@ class JobPostingViewController extends HTMLElement{
 		this.$skillsContainer = this.shadowRoot.querySelector('.skills-container');
 		this.$specialCommitments = this.shadowRoot.querySelector('#specialCommitments');
 		this.$specialCommitmentsContainer = this.shadowRoot.querySelector('#specialCommitmentsContainer');
+		this.$applicationInstructions = this.shadowRoot.querySelector('#applicationInstructions');
+		this.$applicationInstructionsContainer = this.shadowRoot.querySelector('#applicationInstructionsContainer');
+		
 		this.$title = this.shadowRoot.querySelector('#title');
 		this.$validThrough = this.shadowRoot.querySelector('#validThrough');
 		this.$workHours = this.shadowRoot.querySelector('#workHours');
@@ -220,6 +223,12 @@ class JobPostingViewController extends HTMLElement{
 	get specialCommitments(){return this.model.specialCommitments;}
 	set specialCommitments(value){
 		this.model.specialCommitments = value
+		this.setAttribute('value', JSON.stringify(this.value));
+	}
+
+	get applicationInstructions(){return this.model.applicationInstructions;}
+	set applicationInstructions(value){
+		this.model.applicationInstructions = value
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
@@ -494,6 +503,12 @@ class JobPostingViewController extends HTMLElement{
 				this.$specialCommitments.innerText = this.model.specialCommitments;
 				this.$specialCommitmentsContainer.hidden = false;
 			} else if(this.$specialCommitments && !this.preview){ this.$specialCommitmentsContainer.hidden = true; }
+
+			if(this.$applicationInstructions && this.model.applicationInstructions){
+				this.$applicationInstructions.innerText = this.model.applicationInstructions;
+				this.$applicationInstructionsContainer.hidden = false;
+			} else if(this.$applicationInstructions && !this.preview){ this.$applicationInstructionsContainer.hidden = true; }
+
 
 			//TITLE
 			if(this.$title && this.model.title){
