@@ -1,29 +1,28 @@
 {
-  "_from": "ui-job-posting@^0.1.3",
-  "_id": "ui-job-posting@0.1.4",
+  "_from": "ui-job-posting@^0.1.8",
+  "_id": "ui-job-posting@0.1.8",
   "_inBundle": false,
-  "_integrity": "sha512-yZaV8GzghVZ4ZyX8ksOElMUN0vBAs2UnYPusXaNLn+RicfkPqPvN/T04mg1HMxgklj96Z8Ic8PsBxfGMnJBihA==",
+  "_integrity": "sha512-tGV4NAkg+SZPsYO0y4xOoi/TlL1gRqk7ZO2s+G9F1mftryP50HQ2twkfUXRximrYowpHGZuZ0IM1EdDgnHtPiQ==",
   "_location": "/ui-job-posting",
   "_phantomChildren": {},
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "ui-job-posting@^0.1.3",
+    "raw": "ui-job-posting@^0.1.8",
     "name": "ui-job-posting",
     "escapedName": "ui-job-posting",
-    "rawSpec": "^0.1.3",
+    "rawSpec": "^0.1.8",
     "saveSpec": null,
-    "fetchSpec": "^0.1.3"
+    "fetchSpec": "^0.1.8"
   },
   "_requiredBy": [
-    "#USER",
     "/",
     "/ui-job-posting-form"
   ],
-  "_resolved": "https://registry.npmjs.org/ui-job-posting/-/ui-job-posting-0.1.4.tgz",
-  "_shasum": "03585634ee7af876fe1a785531266331cd20552d",
-  "_spec": "ui-job-posting@^0.1.3",
-  "_where": "/Users/estefania/GitHub/app-admin",
+  "_resolved": "https://registry.npmjs.org/ui-job-posting/-/ui-job-posting-0.1.8.tgz",
+  "_shasum": "7e814e10529e154116f62b7a4c4434b9965ce1ec",
+  "_spec": "ui-job-posting@^0.1.8",
+  "_where": "/Users/estefania/Desktop/application",
   "author": {
     "name": "JoseBarrios"
   },

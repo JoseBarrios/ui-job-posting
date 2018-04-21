@@ -70,6 +70,8 @@ class JobPostingViewController extends HTMLElement{
 		switch(attrName){
 			case 'value':
 				this.value = JSON.parse(newVal);
+				console.log("LSKDJFLSKD")
+				console.log(newVal)
 				break;
 			case 'preview':
 				this.preview = (newVal === 'true');
@@ -235,7 +237,7 @@ class JobPostingViewController extends HTMLElement{
 	get url(){return this.model.url;}
 	set url(value){
 		this.model.url = value
-		this.$applyButton.addEventListener('click', e => { location.href=`${this.model.url}`; });
+		// this.$applyButton.addEventListener('click', e => { location.href=`${this.model.url}`; });
 		this.setAttribute('value', JSON.stringify(this.value));
 	}
 
@@ -361,7 +363,10 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$educationRequirements && this.model.educationRequirements){
 				this.$educationRequirements.innerText = '';
 				this.$educationRequirementsContainer.hidden = false;
-				this.model.educationRequirements.split(';').forEach((requirement,index) => {
+				if (Array.isArray(this.model.educationRequirements) == false) {
+					this.model.educationRequirements = this.model.educationRequirements.split(';')
+				}
+				this.model.educationRequirements.forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -382,7 +387,10 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$experienceRequirements && this.model.experienceRequirements){
 				this.$experienceRequirements.innerText = '';
 				this.$experienceRequirementsContainer.hidden = false;
-				this.model.experienceRequirements.split(';').forEach((requirement,index) => {
+				if (Array.isArray(this.model.experienceRequirements) == false) {
+					this.model.experienceRequirements = this.model.experienceRequirements.split(';')
+				}
+				this.model.experienceRequirements.forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -402,7 +410,10 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$incentiveCompensation && this.model.incentiveCompensation){
 				this.$incentiveCompensation.innerText = '';
 				this.$incentiveCompensationContainer.hidden = false;
-				this.model.incentiveCompensation.split(';').forEach((requirement,index) => {
+				if (Array.isArray(this.model.incentiveCompensation) == false) {
+					this.model.incentiveCompensation = this.model.incentiveCompensation.split(';')
+				}
+				this.model.incentiveCompensation.forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -422,8 +433,11 @@ class JobPostingViewController extends HTMLElement{
 			//JOB BENEFITS
 			if(this.$jobBenefits && this.model.jobBenefits){
 				this.$jobBenefits.innerText = '';
-				this.$jobBenefitsContainer.hidden = false;
-				this.model.jobBenefits.split(';').forEach((requirement,index) => {
+				this.$experienceRequirementsContainer.hidden = false;
+				if (Array.isArray(this.model.jobBenefits) == false) {
+					this.model.jobBenefits = this.model.jobBenefits.split(';')
+				}
+				this.model.jobBenefits.forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -452,7 +466,10 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$qualifications && this.model.qualifications){
 				this.$qualifications.innerText = '';
 				this.$qualificationsContainer.hidden = false;
-				this.model.qualifications.split(';').forEach((requirement,index) => {
+				if (Array.isArray(this.model.qualifications) == false) {
+					this.model.qualifications = this.model.qualifications.split(';')
+				}
+				this.model.qualifications.forEach((requirement,index) => {
 					var p = document.createElement('p');
 					p.innerText = `${requirement}`;
 					p.style.paddingLeft = this.listOffset;
@@ -466,7 +483,10 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$responsibilities && this.model.responsibilities){
 				this.$responsibilities.innerText = '';
 				this.$responsibilitiesContainer.hidden = false;
-				this.model.responsibilities.split(';').forEach((requirement,index) => {
+				if (Array.isArray(this.model.responsibilities) == false) {
+					this.model.responsibilities = this.model.incentiveCompensation.split(';')
+				}
+				this.model.responsibilities.forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
 						p.innerText = `${requirement}`;
@@ -487,7 +507,10 @@ class JobPostingViewController extends HTMLElement{
 			if(this.$skills && this.model.skills){
 				this.$skills.innerText = '';
 				this.$skillsContainer.hidden = false;
-				this.model.skills.split(';').forEach((requirement,index) => {
+				if (Array.isArray(this.model.skills) == false) {
+					this.model.skills = this.model.skills.split(';')
+				}
+				this.model.skills.forEach((requirement,index) => {
 					if(requirement && requirement !== ''){
 						var p = document.createElement('p');
 						p.innerText = `${requirement}`;
@@ -540,9 +563,9 @@ class JobPostingViewController extends HTMLElement{
 				this.$image.style.display = "block";
 			}
 
-			if(this.$applyButton && this.model.url) {
-				this.$applyButton.addEventListener('click', e => { location.href=`${this.model.url}`; });
-			}
+			// if(this.$applyButton && this.model.url) {
+			// 	this.$applyButton.addEventListener('click', e => { location.href=`${this.model.url}`; });
+			// }
 			//else if (this.$image && !this.preview){ this.$image.style.display = "none"; }
 		}
 	}
